@@ -46,15 +46,23 @@ padding-bottom: 30px;
 <script>
 
 	$(document).on('click', '#btnWriteForm', function(e){
-
 		e.preventDefault();
-
-		
-
-		location.href = "${pageContext.request.contextPath}/board/boardForm";
-
+		location.href = "${pageContext.request.contextPath}/board/write";
 	});
 
+	
+	
+	
+	
+	
+	function fn_contentView(bid){
+		var url = "${pageContext.request.contextPath}/board/readContent";
+		url = url + "?bid="+bid;
+		location.href = url;
+	}
+	
+	
+	
 </script>
 
 
@@ -106,7 +114,13 @@ padding-bottom: 30px;
 					<c:forEach var="list" items="${boardList}">
 						<tr>
 							<td><c:out value="${list.bid}"/></td>
-							<td><c:out value="${list.title}"/></td>
+		<td>					
+<a href="#" onClick="fn_contentView(<c:out value="${list.bid}"/>)">
+
+<c:out value="${list.title}"/>
+
+</a>
+</td>
 							<td><c:out value="${list.reg_id}"/></td>
 							<td><c:out value="${list.view_cnt}"/></td>
 							<td><c:out value="${list.reg_dt}"/></td>

@@ -15,7 +15,8 @@ public interface BoardService {
 	//글작성
 	public void write(BoardVO boardVO) throws Exception;
 	
-
+	//게시글 상세 내용 출력
+	public BoardVO readContent(int bid) throws Exception;
 
 }
 

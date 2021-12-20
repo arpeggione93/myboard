@@ -46,6 +46,17 @@ public class BoardController {
 		return "redirect:/board/readList";
 	}
 	
+	//게시글 상세내용 불러오기
+	@RequestMapping(value = "/readContent", method = RequestMethod.GET)
+	public String readContentGET(int bid, HttpSession session) throws Exception {
+		
+		 session.setAttribute("Content", boardService.readContent(bid));
+		
+		 System.out.println("값이 왜 안나오냐? " + session.getAttribute("Content"));
+		 				return "board/Content";
+			}
+	
+	
 	
 	
 	

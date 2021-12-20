@@ -50,7 +50,7 @@
 
 		
 
-		location.href="${pageContext.request.contextPath}/board/getBoardList";
+		location.href="${pageContext.request.contextPath}/board/readList";
 
 	});
 
@@ -80,7 +80,7 @@ body {
 
 			<h2>게시글 작성</h2>
 
-			<form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/saveBoard">
+			<form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/write">
 
 				<div class="mb-3">
 

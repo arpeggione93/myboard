@@ -24,7 +24,7 @@
 	<!-- contents 가져오기 -->
 	<select id ="readContent" resultType = "boardVO" parameterType = "boardVO">
 	SELECT
-		BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
+		BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, reg_id, reg_dt, edit_dt
 		FROM
 		mh_board
 		WHERE
