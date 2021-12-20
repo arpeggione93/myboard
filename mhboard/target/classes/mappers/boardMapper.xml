@@ -26,6 +26,9 @@
 	FROM
 		mh_board
 	
+	<!-- 페이징처리 -->
+	LIMIT #{startList}, #{listSize}
+	
 	</select>
 
 
