@@ -34,7 +34,7 @@
 
 	<!-- 게시물 작성 -->
 	<insert id = "write" parameterType = "boardVO">
-		INSERT INTO mh_board (DATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT)
+		INSERT INTO mh_board (CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT)
 		VALUES(
 		
 		#{cate_cd},

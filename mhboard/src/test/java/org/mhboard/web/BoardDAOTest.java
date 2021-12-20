@@ -28,12 +28,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-
 @ContextConfiguration(locations = {
-
 		"classpath:config/spring/root-context.xml"
-
-	
 		})
 
 public class BoardDAOTest {
@@ -48,6 +44,7 @@ public class BoardDAOTest {
 	
 
 	@Test 
+	@Ignore
 	public void testGetBoardList() throws Exception {
 
 		List<BoardVO> boardList = boardDAO.select();
@@ -72,7 +69,8 @@ public class BoardDAOTest {
 
 	
 
-	@Test @Ignore
+	@Test 
+	@Ignore
 	public void testGetBoardContent() throws Exception {
 
 		BoardVO boardVO = boardDAO.readContent(1);
@@ -107,7 +105,8 @@ public class BoardDAOTest {
 
 	
 
-	@Test @Ignore 
+	@Test  
+	@Ignore
 	public void testInsertBoard() throws Exception {
 
 		BoardVO boardVO = new BoardVO();
@@ -142,7 +141,8 @@ public class BoardDAOTest {
 
 	
 
-	@Test @Ignore 
+	@Test
+	@Ignore
 	public void testUpdateBoard() throws Exception {
 
 		BoardVO boardVO = new BoardVO();
@@ -177,7 +177,7 @@ public class BoardDAOTest {
 
 	
 
-	@Test   @Ignore
+	@Test
 	public void tesDeleteBoard() throws Exception {
 
 		int result = boardDAO.delete(1);
