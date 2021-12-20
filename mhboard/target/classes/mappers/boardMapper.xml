@@ -8,7 +8,85 @@
 
     
 
-<mapper namespace="boardMapper">
+<mapper namespace="org.mhboard.web.mappers.boardMapper">
+
+
+<!-- list 불러오기 -->
+	<select id = "select" resultType = "boardVO">
+	SELECT 
+		BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
+	FROM
+		mh_board
+	
+	</select>
+
+
+	<!-- contents 가져오기 -->
+	<select id ="readContent" resultType = "boardVO" parameterType = "boardVO">
+	SELECT
+		BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
+		FROM
+		mh_board
+		WHERE
+		BID = #{bid}
+	</select>
+
+
+	<!-- 게시물 작성 -->
+	<insert id = "write" parameterType = "boardVO">
+		INSERT INTO mh_board (DATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT)
+		VALUES(
+		
+		#{cate_cd},
+		#{title},
+		#{content},
+		#{tag},
+		0,
+		#{reg_id},
+		now(),
+		now()
+		)
+	
+	</insert>
+
+
+	<!-- 수정하기 -->
+
+	<update id = "update" parameterType = "boardVO">
+	
+	UPDATE mh_board SET
+		CATE_CD = #{cate_cd},
+		TITLE = #{title},
+		CONTENT = #{content},
+		TAG = #{tag},
+		EDIT_DT = now()
+		WHERE
+			BID = #{bid}
+		
+	</update>
+
+	<!-- 삭제하기 -->
+	
+	<delete id="delete" parameterType = "int">
+	DELETE FROM mh_board
+	WHERE BID = #{bid}
+	</delete>
+
+
+
+	<!-- 조회수 증가 -->
+	<update id ="updateViewCnt" parameterType = "boardVO">
+	
+	UPDATE mh_board SET
+		VIEW_CNT = VIEW_CNT + 1
+		WHERE
+		BID = #{bid}
+	
+	</update>
+
+
+
+
 
 
 
