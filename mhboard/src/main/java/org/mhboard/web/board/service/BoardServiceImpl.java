@@ -30,9 +30,8 @@ public class BoardServiceImpl implements BoardService {
 		//게시글 상세내용 출력
 		@Override
 		public BoardVO readContent(int bid) throws Exception{
-			
 			boardDAO.updateViewCnt(bid); //게시글 조회 시, 해당 게시글의 조회수를 +1 해주는 역할
-			
+			System.out.println("상세내용 출력 하기전 : " + boardDAO.readContent(bid));
 			return boardDAO.readContent(bid);
 		}
 

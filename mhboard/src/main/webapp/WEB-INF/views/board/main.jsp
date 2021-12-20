@@ -121,9 +121,9 @@ padding-bottom: 30px;
 
 </a>
 </td>
-							<td><c:out value="${list.reg_id}"/></td>
-							<td><c:out value="${list.view_cnt}"/></td>
-							<td><c:out value="${list.reg_dt}"/></td>
+							<td><c:out value="${list.regId}"/></td>
+							<td><c:out value="${list.viewCnt}"/></td>
+							<td><c:out value="${list.regDt}"/></td>
 						</tr>
 
 					</c:forEach>

@@ -55,7 +55,7 @@
 
 				<div class="board_info_box">
 
-					<span class="board_author"><c:out value="${Content.reg_id}"/>,</span><span class="board_date"><c:out value="${Content.reg_dt}"/></span>
+					<span class="board_author"><c:out value="${Content.regId}"/>,</span><span class="board_date"><c:out value="${Content.regDt}"/></span>
 
 				</div>
 

@@ -96,7 +96,7 @@ body {
 
 					<label for="reg_id">작성자</label>
 
-					<input type="text" class="form-control" name="reg_id" id="reg_id" placeholder="이름을 입력해 주세요">
+					<input type="text" class="form-control" name="regId" id="regId" placeholder="이름을 입력해 주세요">
 
 				</div>
 

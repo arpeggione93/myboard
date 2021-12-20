@@ -12,9 +12,17 @@
 
 
 <!-- list 불러오기 -->
-	<select id = "readList" resultType = "boardVO">
+	<select id = "readList" resultType = "boardVO" parameterType ="boardVO">
 	SELECT 
-		BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
+		BID, 
+		CATE_CD, 
+		TITLE, 
+		CONTENT, 
+		TAG, 
+		view_cnt, 
+		reg_id, 
+		reg_dt, 
+		edit_dt
 	FROM
 		mh_board
 	
@@ -24,7 +32,7 @@
 	<!-- contents 가져오기 -->
 	<select id ="readContent" resultType = "boardVO" parameterType = "boardVO">
 	SELECT
-		BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, reg_id, reg_dt, edit_dt
+		BID, CATE_CD, TITLE, CONTENT, TAG, view_cnt, reg_id, reg_dt, edit_dt
 		FROM
 		mh_board
 		WHERE
@@ -37,12 +45,12 @@
 		INSERT INTO mh_board (CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT)
 		VALUES(
 		
-		#{cate_cd},
+		#{cateCd},
 		#{title},
 		#{content},
 		#{tag},
 		0,
-		#{reg_id},
+		#{regId},
 		now(),
 		now()
 		)
@@ -55,7 +63,7 @@
 	<update id = "update" parameterType = "boardVO">
 	
 	UPDATE mh_board SET
-		CATE_CD = #{cate_cd},
+		CATE_CD = #{cateCd},
 		TITLE = #{title},
 		CONTENT = #{content},
 		TAG = #{tag},

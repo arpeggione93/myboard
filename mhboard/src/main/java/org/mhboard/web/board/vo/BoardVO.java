@@ -2,29 +2,20 @@ package org.mhboard.web.board.vo;
 
 public class BoardVO {
 
-	/*
+
 	private int bid;
-	private String cate_cd;
+	private String cateCd;
 	private String title;
 	private String content;
 	private String tag;
-	private int view_cnt;
-	private String reg_id;
-	private String reg_dt;
-	private String edit_dt;
-	*/
+	private int viewCnt;
+	private String regId;
+	private String regDt;
+	private String editDt;
+
 
 	
-	public int bid;
-	public String cate_cd;
-	public String title;
-	public String content;
-	public String tag;
-	public int view_cnt;
-	public String reg_id;
-	public String reg_dt;
-	public String edit_dt;
-	
+
 	
 	
 	
@@ -40,14 +31,6 @@ public class BoardVO {
 
 	public void setBid(int bid) {
 		this.bid = bid;
-	}
-
-	public String getCate_cd() {
-		return cate_cd;
-	}
-
-	public void setCate_cd(String cate_cd) {
-		this.cate_cd = cate_cd;
 	}
 
 	public String getTitle() {
@@ -74,50 +57,65 @@ public class BoardVO {
 		this.tag = tag;
 	}
 
-	public int getView_cnt() {
-		return view_cnt;
+
+	public String getCateCd() {
+		return cateCd;
 	}
 
-	public void setView_cnt(int view_cnt) {
-		this.view_cnt = view_cnt;
+
+	public void setCateCd(String cateCd) {
+		this.cateCd = cateCd;
 	}
 
-	public String getReg_id() {
-		return reg_id;
+
+	public int getViewCnt() {
+		return viewCnt;
 	}
 
-	public void setReg_id(String reg_id) {
-		this.reg_id = reg_id;
+
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
 	}
 
-	public String getReg_dt() {
-		return reg_dt;
+
+	public String getRegId() {
+		return regId;
 	}
 
-	public void setReg_dt(String reg_dt) {
-		this.reg_dt = reg_dt;
+
+	public void setRegId(String regId) {
+		this.regId = regId;
 	}
 
-	public String getEdit_dt() {
-		return edit_dt;
+
+	public String getRegDt() {
+		return regDt;
 	}
 
-	public void setEdit_dt(String edit_dt) {
-		this.edit_dt = edit_dt;
+
+	public void setRegDt(String regDt) {
+		this.regDt = regDt;
 	}
 
-	
-	
-	
+
+	public String getEditDt() {
+		return editDt;
+	}
+
+
+	public void setEditDt(String editDt) {
+		this.editDt = editDt;
+	}
+
+
 	@Override
 	public String toString() {
-		return "BoardVO [bid=" + bid + ", cate_cd=" + cate_cd + ", title=" + title + ", content=" + content + ", tag="
-				+ tag + ", view_cnt=" + view_cnt + ", reg_id=" + reg_id + ", reg_dt=" + reg_dt + ", edit_dt=" + edit_dt
-				+ "]";
+		return "BoardVO [bid=" + bid + ", cateCd=" + cateCd + ", title=" + title + ", content=" + content + ", tag="
+				+ tag + ", viewCnt=" + viewCnt + ", regId=" + regId + ", regDt=" + regDt + ", editDt=" + editDt + "]";
 	}
+
 	
-	
-	
+
 	
 	
 	

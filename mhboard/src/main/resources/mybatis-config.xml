@@ -10,9 +10,10 @@
         <setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
 	
+	
+
 	<typeAliases>	
 	
-	<!--  -->
         <typeAlias type="org.mhboard.web.board.vo.BoardVO" alias="boardVO"/>
 
 	</typeAliases>

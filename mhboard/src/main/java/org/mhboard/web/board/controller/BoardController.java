@@ -23,6 +23,8 @@ public class BoardController {
 	public String readListGet(Model model)throws Exception{
 		
 		model.addAttribute("boardList", boardService.readList());
+		
+		System.out.println("boardList값은 바로 이것이다. : "+ boardService.readList());
 		return "board/main";
 	}
 	
