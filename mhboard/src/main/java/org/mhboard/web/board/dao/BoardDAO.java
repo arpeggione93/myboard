@@ -5,10 +5,11 @@ import java.util.List;
 
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.paging.Paging;
+import org.mhboard.web.paging.Search;
 
 public interface BoardDAO {
 
-	 List<BoardVO> readList(Paging paging) throws Exception;
+	 List<BoardVO> readList(Search search) throws Exception;
 
 	 BoardVO readContent(int bid) throws Exception;
 	
@@ -21,7 +22,7 @@ public interface BoardDAO {
 	 int updateViewCnt(int bid) throws Exception;
 	
 	//페이징처리 (총 게시글 갯수)
-	 int readListCnt() throws Exception;
+	 int readListCnt(Search search) throws Exception;
 	 
 	 
 }

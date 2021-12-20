@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.mhboard.web.board.service.BoardService;
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.paging.Paging;
+import org.mhboard.web.paging.Search;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,18 +26,30 @@ public class BoardController {
 	@RequestMapping(value = "/readList", method = RequestMethod.GET)
 	public String readListGet(Model model, @RequestParam(required = false, defaultValue = "1") int page
 
-			, @RequestParam(required = false, defaultValue = "1") int range)throws Exception{
+			, @RequestParam(required = false, defaultValue = "1") int range , @RequestParam(required = false, defaultValue = "title") String searchType
+
+			, @RequestParam(required = false) String keyword)throws Exception{
+		
+		Search search = new Search();
+
+		search.setSearchType(searchType);
+
+		search.setKeyword(keyword);
+		
+		
 		
 		//총 게시물 갯수
-		int listCnt = boardService.readListCnt();
+		int listCnt = boardService.readListCnt(search);
 		
-		//페이징처리 객체
+		search.pageInfo(page, range, listCnt);
+		
+		/*//페이징처리 객체
 		Paging paging = new Paging();
 		paging.pageInfo(page, range, listCnt);//현재 페이지, 현재 페이지의 갯수, 총 게시물의 갯수 입력받기
+		*/
 		
 		
-		
-		model.addAttribute("paging", paging);
+		model.addAttribute("paging", search);
 		model.addAttribute("boardList", boardService.readList(paging));
 		
 		System.out.println("boardList값은 바로 이것이다. : "+ boardService.readList(paging));

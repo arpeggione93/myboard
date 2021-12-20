@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.paging.Paging;
+import org.mhboard.web.paging.Search;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -23,8 +24,8 @@ public class BoardDAOImpl implements BoardDAO{
     
     //게시물 목록
     @Override
-	public List<BoardVO> readList(Paging paging) throws Exception{
-		return sqlSession.selectList(NAMESPACE + ".readList", paging);
+	public List<BoardVO> readList(Search search) throws Exception{
+		return sqlSession.selectList(NAMESPACE + ".readList", search);
 	}
 
 	//게시물 내용
@@ -60,8 +61,8 @@ public class BoardDAOImpl implements BoardDAO{
 	
     //총 게시글 갯수
     @Override
-    public int readListCnt() throws Exception{
-    	return sqlSession.selectOne(NAMESPACE + ".readListCnt");
+    public int readListCnt(Search search) throws Exception{
+    	return sqlSession.selectOne(NAMESPACE + ".readListCnt", search);
     }
 	 
 	

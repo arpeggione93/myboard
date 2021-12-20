@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.paging.Paging;
+import org.mhboard.web.paging.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public interface BoardService {
@@ -11,7 +12,7 @@ public interface BoardService {
 	
 	
 	//목록 불러오기 + 페이징처리
-	public List<BoardVO> readList(Paging paging) throws Exception;
+	public List<BoardVO> readList(Search search) throws Exception;
 
 	//글작성
 	public void write(BoardVO boardVO) throws Exception;
@@ -26,7 +27,7 @@ public interface BoardService {
 	public void delete(int bid) throws Exception;
 
 	//페이징처리(총 게시물 갯수)
-	public int readListCnt() throws Exception;
+	public int readListCnt(Search search) throws Exception;
 	
 }
 
