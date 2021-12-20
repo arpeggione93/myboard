@@ -82,6 +82,13 @@ public class BoardController {
 		}
 		
 	
+	//게시글 삭제
+		@RequestMapping(value = "/delete", method = RequestMethod.GET)
+		public String deleteGET(RedirectAttributes rttr, int bid) throws Exception{
+			
+			boardService.delete(bid);
+			return "redirect:/board/readList";
+		}
 	
 	
 }

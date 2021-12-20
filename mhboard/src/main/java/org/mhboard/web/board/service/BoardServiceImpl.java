@@ -43,6 +43,13 @@ public class BoardServiceImpl implements BoardService {
 			
 		}
 		
-	
+		@Override
+		//게시물 삭제
+		public void delete(int bid) throws Exception{
+			
+			boardDAO.delete(bid);
+			
+		}
+
 	
 }

@@ -35,6 +35,7 @@
 		$("#form").submit();
 	});
 
+	
 	$(document).on('click', '#btnList', function(e){
 		e.preventDefault();
 
