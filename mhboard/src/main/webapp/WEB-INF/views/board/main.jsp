@@ -126,6 +126,26 @@ function fn_prev(page, range, contentSize) {
 		location.href = url;
 
 	}
+	
+	
+	$(document).on('click', '#btnSearch', function(e){
+
+		e.preventDefault();
+
+		var url = "${pageContext.request.contextPath}/board/readList";
+
+		url = url + "?searchType=" + $('#searchType').val();
+
+		url = url + "&keyword=" + $('#keyword').val();
+
+		location.href = url;
+
+		console.log(url);
+
+	});	
+	
+	
+	
 
 </script>
 
@@ -217,6 +237,45 @@ function fn_prev(page, range, contentSize) {
 
 <!-- paging{start} -->
 
+	<!-- search{s} -->
+
+		<div class="form-group row justify-content-center">
+
+			<div class="w100" style="padding-right:10px">
+
+				<select class="form-control form-control-sm" name="searchType" id="searchType">
+
+					<option value="title">제목</option>
+
+					<option value="Content">본문</option>
+
+					<option value="reg_id">작성자</option>
+
+				</select>
+
+			</div>
+
+			<div class="w300" style="padding-right:10px">
+
+				<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
+
+			</div>
+
+			<div>
+
+				<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+
+			</div>
+
+		</div>
+
+		<!-- search{e} -->
+
+
+
+
+
+<br>
 <br>
 	<div id="paginationBox">
 		<ul class="pagination">
