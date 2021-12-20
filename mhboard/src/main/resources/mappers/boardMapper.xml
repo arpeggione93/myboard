@@ -32,6 +32,26 @@
 	</select>
 
 
+	<!-- 페이징처리 구문 -->
+	<select id="readListCnt" resultType="int">
+
+		SELECT
+
+			count(*) as listCnt
+
+		FROM
+
+			mh_board
+
+	</select>
+
+	<!-- 여기까지 페이징처리 -->
+
+
+
+
+
+
 	<!-- contents 가져오기 -->
 	<select id ="readContent" resultType = "boardVO" parameterType = "boardVO">
 	SELECT
@@ -96,9 +116,7 @@
 	</update>
 
 
-
-
-
+	
 
 
 </mapper>

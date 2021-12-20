@@ -24,6 +24,9 @@ public interface BoardService {
 	//게시물 삭제
 	public void delete(int bid) throws Exception;
 
+	//페이징처리(총 게시물 갯수)
+	public int readListCnt() throws Exception;
+	
 }
 
 

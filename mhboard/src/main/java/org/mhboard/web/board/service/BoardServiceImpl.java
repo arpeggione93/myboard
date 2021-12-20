@@ -51,5 +51,14 @@ public class BoardServiceImpl implements BoardService {
 			
 		}
 
+
+		//페이징처리(총 게시물 갯수)
+		@Override
+		public int readListCnt() throws Exception{
+			
+			return boardDAO.readListCnt();
+			
+		}
+		
 	
 }

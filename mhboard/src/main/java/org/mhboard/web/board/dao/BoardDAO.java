@@ -18,5 +18,8 @@ public interface BoardDAO {
 
 	 int updateViewCnt(int bid) throws Exception;
 	
-	
+	//페이징처리 (총 게시글 갯수)
+	 int readListCnt() throws Exception;
+	 
+	 
 }
