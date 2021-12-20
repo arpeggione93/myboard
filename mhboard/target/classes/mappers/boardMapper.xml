@@ -61,11 +61,8 @@
 	<select id="readListCnt" resultType="int">
 
 		SELECT
-
 			count(*) as listCnt
-
 		FROM
-
 			mh_board
 
 

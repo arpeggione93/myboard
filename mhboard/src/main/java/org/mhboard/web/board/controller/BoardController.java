@@ -49,6 +49,9 @@ public class BoardController {
 		
 		
 		model.addAttribute("paging", search);
+		
+		System.out.println("page, range, listCnt, 마지막 페이지, 그리고 총 게시물 수 " +"  " + search.getPage() +"  " + search.getRange() +"  " + search.getListCnt() +"  " + search.getEndPage() +"  " + search.getListCnt());
+		
 		model.addAttribute("boardList", boardService.readList(search));
 		
 		System.out.println("boardList값은 바로 이것이다. : "+ boardService.readList(search));
