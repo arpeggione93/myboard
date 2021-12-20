@@ -43,6 +43,10 @@ padding-bottom: 30px;
 
 </head>
 
+<!-- 검색기능 추가 -->
+<c:url var="readListURL" value="/board/readList"></c:url>
+
+
 <script>
 
 	$(document).on('click', '#btnWriteForm', function(e){

@@ -26,6 +26,31 @@
 	FROM
 		mh_board
 	
+	<!-- 검색기능 추가 -->
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+			<if test="searchType=='title' and keyword != null and keyword != '' ">
+
+				AND TITLE like CONCAT('%', #{keyword}, '%')
+
+			</if>
+
+			<if test="searchType=='content' and keyword != null and keyword != '' ">
+
+				AND CONTENT like CONCAT('%', #{keyword}, '%')
+
+			</if>
+
+			<if test="searchType=='regId' and keyword != null and keyword != '' ">
+
+				AND regId like CONCAT('%', #{keyword}, '%')
+
+			</if>	
+
+		</trim>
+		<!-- 여기까지 검색기능 -->
+	
+	
 	<!-- 페이징처리 -->
 	LIMIT #{startList}, #{listSize}
 	
@@ -42,6 +67,40 @@
 		FROM
 
 			mh_board
+
+
+<!-- 검색기능 -->
+
+<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+<if test="keyword != null and keyword != '' ">
+
+			<if test="searchType=='title'">
+
+				AND TITLE like CONCAT('%', #{keyword}, '%')
+
+			</if>
+
+			<if test="searchType=='content'">
+
+				AND CONTENT like CONCAT('%', #{keyword}, '%')
+
+			</if>
+
+			<if test="searchType=='regㅑd'">
+
+				AND regㅑd like CONCAT('%', #{keyword}, '%')
+
+			</if>
+
+      </if>
+
+	</trim>
+
+
+<!-- 여기까지 검색기능 -->
+
+
 
 	</select>
 
