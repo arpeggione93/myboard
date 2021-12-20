@@ -47,7 +47,7 @@ public class BoardDAOTest {
 	@Ignore
 	public void testGetBoardList() throws Exception {
 
-		List<BoardVO> boardList = boardDAO.select();
+		List<BoardVO> boardList = boardDAO.readList();
 
 		logger.info("\n Board List \n ");
 
@@ -106,7 +106,7 @@ public class BoardDAOTest {
 	
 
 	@Test  
-	@Ignore
+	
 	public void testInsertBoard() throws Exception {
 
 		BoardVO boardVO = new BoardVO();
@@ -178,6 +178,7 @@ public class BoardDAOTest {
 	
 
 	@Test
+	@Ignore
 	public void tesDeleteBoard() throws Exception {
 
 		int result = boardDAO.delete(1);

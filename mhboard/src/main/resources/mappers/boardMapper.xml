@@ -12,7 +12,7 @@
 
 
 <!-- list 불러오기 -->
-	<select id = "select" resultType = "boardVO">
+	<select id = "readList" resultType = "boardVO">
 	SELECT 
 		BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
 	FROM

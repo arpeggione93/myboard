@@ -6,7 +6,7 @@ import org.mhboard.web.board.vo.BoardVO;
 
 public interface BoardDAO {
 
-	 List<BoardVO> select() throws Exception;
+	 List<BoardVO> readList() throws Exception;
 
 	 BoardVO readContent(int bid) throws Exception;
 	

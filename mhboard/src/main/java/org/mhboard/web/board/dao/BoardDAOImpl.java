@@ -20,9 +20,10 @@ public class BoardDAOImpl implements BoardDAO{
         this.sqlSession = sqlSession;
     }
     
+    //게시물 목록
     @Override
-	public List<BoardVO> select() throws Exception{
-		return sqlSession.selectList(NAMESPACE + ".select");
+	public List<BoardVO> readList() throws Exception{
+		return sqlSession.selectList(NAMESPACE + ".readList");
 	}
 
 	//게시물 내용
