@@ -1,3 +1,4 @@
 /.metadata/
 mhboard/src/main/webapp/config/config.properties
 mhboard/src/main/resources/config/config.properties
+mhboard/src/main/resources/config/jdbc.properties

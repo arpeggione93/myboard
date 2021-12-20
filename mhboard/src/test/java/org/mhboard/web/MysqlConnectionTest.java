@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 
-@ContextConfiguration(locations = { "classpath:spring/root-context.xml" })
+@ContextConfiguration(locations = { "classpath:config/spring/root-context.xml" })
 
 public class MysqlConnectionTest {
 
@@ -46,7 +46,7 @@ public class MysqlConnectionTest {
 
 		try (Connection con = ds.getConnection()){
 
-			logger.info("\n MySQL ¿¬°á : " + con);
+			logger.info("\n MySQL ì—°ê²°ì„±ê³µ : " + con);
 
 		} catch (Exception e) {
 
