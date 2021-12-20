@@ -2,6 +2,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ include file="/WEB-INF/views/layout/header.jsp"%>
 <!DOCTYPE html>
 
 <html>
@@ -9,6 +10,11 @@
 <head>
 
 <meta charset="UTF-8">
+
+
+<!-- jQuery -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
 
 <!-- Bootstrap CSS -->
@@ -36,6 +42,22 @@ padding-bottom: 30px;
 
 
 </head>
+
+<script>
+
+	$(document).on('click', '#btnWriteForm', function(e){
+
+		e.preventDefault();
+
+		
+
+		location.href = "${pageContext.request.contextPath}/board/boardForm";
+
+	});
+
+</script>
+
+
 
 <body>
 
@@ -101,7 +123,7 @@ padding-bottom: 30px;
 	</table>
 
 
-<!-- 버튼 -->
+<!-- 글쓰기 버튼 -->
 <div >
 
 			<button type="button" class="btn btn-sm btn-primary" id="btnWriteForm">글쓰기</button>
