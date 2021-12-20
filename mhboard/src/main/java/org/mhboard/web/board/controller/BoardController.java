@@ -5,11 +5,13 @@ import javax.servlet.http.HttpSession;
 
 import org.mhboard.web.board.service.BoardService;
 import org.mhboard.web.board.vo.BoardVO;
+import org.mhboard.web.paging.Paging;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -19,11 +21,23 @@ public class BoardController {
 	@Inject
 	private BoardService boardService;
 	
-	//목록 불러오기
+	//목록 불러오기 + 페이징처리 진행중
 	@RequestMapping(value = "/readList", method = RequestMethod.GET)
-	public String readListGet(Model model)throws Exception{
+	public String readListGet(Model model, @RequestParam(required = false, defaultValue = "1") int page
+
+			, @RequestParam(required = false, defaultValue = "1") int range)throws Exception{
 		
-		model.addAttribute("boardList", boardService.readList());
+		//총 게시물 갯수
+		int listCnt = boardService.readListCnt();
+		
+		//페이징처리 객체
+		Paging paging = new Paging();
+		paging.pageInfo(page, range, listCnt);//현재 페이지, 현재 페이지의 갯수, 총 게시물의 갯수 입력받기
+		
+		
+		
+		model.addAttribute("paging", paging);
+		model.addAttribute("boardList", boardService.readList(paging));
 		
 		System.out.println("boardList값은 바로 이것이다. : "+ boardService.readList());
 		

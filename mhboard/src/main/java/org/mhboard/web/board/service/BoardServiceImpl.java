@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.mhboard.web.board.dao.BoardDAO;
 import org.mhboard.web.board.vo.BoardVO;
+import org.mhboard.web.paging.Paging;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,8 +16,8 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDAO boardDAO;
 
 		//목록 불러오기
-		public List<BoardVO> readList() throws Exception{
-			return boardDAO.readList();
+		public List<BoardVO> readList(Paging paging) throws Exception{
+			return boardDAO.readList(paging);
 		}
 
 		//글작성

@@ -2,11 +2,13 @@ package org.mhboard.web.board.dao;
 
 import java.util.List;
 
+
 import org.mhboard.web.board.vo.BoardVO;
+import org.mhboard.web.paging.Paging;
 
 public interface BoardDAO {
 
-	 List<BoardVO> readList() throws Exception;
+	 List<BoardVO> readList(Paging paging) throws Exception;
 
 	 BoardVO readContent(int bid) throws Exception;
 	
