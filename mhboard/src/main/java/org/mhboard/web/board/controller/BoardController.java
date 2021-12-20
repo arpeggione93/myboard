@@ -39,7 +39,7 @@ public class BoardController {
 		model.addAttribute("paging", paging);
 		model.addAttribute("boardList", boardService.readList(paging));
 		
-		System.out.println("boardList값은 바로 이것이다. : "+ boardService.readList());
+		System.out.println("boardList값은 바로 이것이다. : "+ boardService.readList(paging));
 		
 		return "board/main";
 	}

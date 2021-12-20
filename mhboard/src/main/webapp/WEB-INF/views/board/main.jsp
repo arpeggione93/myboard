@@ -66,6 +66,72 @@ padding-bottom: 30px;
 </script>
 
 
+<!-- 페이징처리 -->
+<script>
+
+//이전 버튼 이벤트
+
+function fn_prev(page, range, contentSize) {
+
+		var page = ((range - 2) * contentSize) + 1;
+
+		var range = range - 1;
+
+		var url = "${pageContext.request.contextPath}/board/readList";
+
+		url = url + "?page=" + page;
+
+		url = url + "&range=" + range;
+
+		
+
+		location.href = url;
+
+	}
+
+
+
+  //페이지 번호 클릭
+
+	function fn_paging(page, range, contentSize, searchType, keyword) {
+
+		var url = "${pageContext.request.contextPath}/board/readList";
+
+		url = url + "?page=" + page;
+
+		url = url + "&range=" + range;
+
+		location.href = url;	
+
+	}
+
+
+
+	//다음 버튼 이벤트
+
+	function fn_next(page, range, contentSize) {
+
+		var page = parseInt((range * contentSize)) + 1;
+
+		var range = parseInt(range) + 1;
+
+		var url = "${pageContext.request.contextPath}/board/readList";
+
+		url = url + "?page=" + page;
+
+		url = url + "&range=" + range;
+
+		
+
+		location.href = url;
+
+	}
+
+</script>
+
+<!-- 여기까지 페이징처리 -->
+
+
 
 <body>
 
@@ -145,6 +211,45 @@ padding-bottom: 30px;
 		</div>
 <!-- 여기까지 버튼 -->
 
+
+<!-- 페이징처리 버튼 -->
+
+
+<!-- paging{start} -->
+
+<br>
+	<div id="paginationBox">
+		<ul class="pagination">
+			<c:if test="${paging.prev}">
+				<li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${paging.page}', '${paging.range}', '${paging.contentSize}')">Previous</a></li>
+			</c:if>
+
+				
+
+			<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="idx">
+
+				<li class="page-item <c:out value="${paging.page == idx ? 'active' : ''}"/> "><a class="page-link" href="#" onClick="fn_paging('${idx}', '${paging.range}', '${paging.contentSize}')"> ${idx} </a></li>
+
+			</c:forEach>
+
+				
+
+			<c:if test="${paging.next}">
+
+				<li class="page-item"><a class="page-link" href="#" onClick="fn_next('${paging.range}', 
+
+'${paging.range}', '${paging.contentSize}')" >Next</a></li>
+
+			</c:if>
+
+		</ul>
+
+	</div>
+
+	<!-- paging{end} -->
+
+
+<!-- 여기까지 페이징처리 버튼 -->
 
 
 </div>
