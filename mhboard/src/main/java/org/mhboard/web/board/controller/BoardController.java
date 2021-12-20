@@ -25,6 +25,7 @@ public class BoardController {
 		model.addAttribute("boardList", boardService.readList());
 		
 		System.out.println("boardList값은 바로 이것이다. : "+ boardService.readList());
+		
 		return "board/main";
 	}
 	
@@ -59,6 +60,27 @@ public class BoardController {
 			}
 	
 	
+	//게시글 내용 수정폼 불러오기
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String updateGET(int bid, HttpSession session) throws Exception{
+		
+		session.setAttribute("Content", boardService.readContent(bid));
+		session.setAttribute("boardVO", new BoardVO());
+		return "board/editForm";
+	}
+	
+	//게시글 내용 수정
+		@RequestMapping(value = "/update", method = RequestMethod.POST)
+		public String updatePOST(BoardVO boardVO, int bid, HttpSession session) throws Exception{
+			
+			boardService.update(boardVO);
+			
+			System.out.println("제대로 글이 수정 되었나??" + boardService.readContent(bid));
+			
+			return "redirect:/board/readList";
+
+		}
+		
 	
 	
 	

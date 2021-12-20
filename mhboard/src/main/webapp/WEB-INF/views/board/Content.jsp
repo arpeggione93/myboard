@@ -31,7 +31,22 @@
 		location.href = "${pageContext.request.contextPath}/board/readList";
 
 	});
+	
 
+	<%--수정 버튼 클릭 이벤트  --%>
+
+	$(document).on('click', '#btnUpdate', function(){
+
+		var url = "${pageContext.request.contextPath}/board/update";
+
+		url = url + "?bid="+${Content.bid};
+
+		location.href = url;
+
+	});
+	
+	
+	
 </script>
 
 

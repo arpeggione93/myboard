@@ -35,7 +35,14 @@ public class BoardServiceImpl implements BoardService {
 			return boardDAO.readContent(bid);
 		}
 
-
+		//게시글 수정
+		@Override
+		public void update(BoardVO boardVO) throws Exception{
+			
+			boardDAO.update(boardVO);
+			
+		}
+		
 	
 	
 }

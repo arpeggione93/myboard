@@ -28,7 +28,9 @@
 <title>board</title>
 
 <script>
-	$(document).on('click', '#btnSave', function(e){
+
+<%-- 수정하기 버튼을 눌렀을 때, 입력 'form'을 전송해주는 버튼임--%>
+	$(document).on('click', '#btnUpdate', function(e){
 		e.preventDefault();
 		$("#form").submit();
 	});
@@ -67,55 +69,46 @@ body {
 
 		<div class="container" role="main">
 
-			<h2>게시글 작성</h2>
+			<h2>게시글 수정</h2>
 
-			<form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/write">
+			<form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/update">
+				
+				<div class="mb-3">
+					<input type="hidden" class="form-control" name="bid" id="bid" value = "${Content.bid}"  readonly>
+				</div>
+
 
 				<div class="mb-3">
-
 					<label for="title">제목</label>
-
-					<input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
-
+					<input type="text" class="form-control" name="title" id="title" value = "${Content.title }">
 				</div>
 
 				
 
 				<div class="mb-3">
-
-					<label for="reg_id">작성자</label>
-
-					<input type="text" class="form-control" name="regId" id="regId" placeholder="이름을 입력해 주세요">
-
+					<label for="regId">작성자</label>
+					<input type="text" class="form-control" name="regId" id="regId" value = "${Content.regId}" readonly>
 				</div>
 
 				
 
 				<div class="mb-3">
-
 					<label for="content">내용</label>
-
-					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
-
+					<textarea class="form-control" rows="5" name="content" id="content">${Content.content}</textarea>
 				</div>
 
 				
-
 				<div class="mb-3">
-
 					<label for="tag">TAG</label>
-
-					<input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
-
+					<input type="text" class="form-control" name="tag" id="tag" value = "${Content.tag}">
 				</div>
-
 			
 
 			</form>
 
 			<div >
 
-				<button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
+				<button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정하기</button>
 
 				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
 
