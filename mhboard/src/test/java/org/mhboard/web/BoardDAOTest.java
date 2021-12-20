@@ -55,7 +55,7 @@ public class BoardDAOTest {
 
 			for(BoardVO list : boardList) {
 
-				logger.info("결과값은?? : " + list.title);
+			//	logger.info("결과값은?? : " + list.title);
 
 			}
 
@@ -87,13 +87,13 @@ public class BoardDAOTest {
 
 			logger.info("글태그 : " + boardVO.getTag() );
 
-			logger.info("조회수 : " + boardVO.getView_cnt() );
+			logger.info("조회수 : " + boardVO.getViewCnt() );
 
-			logger.info("작성자 : " + boardVO.getReg_id() );
+			logger.info("작성자 : " + boardVO.getRegId() );
 
-			logger.info("작성일 : " + boardVO.getReg_dt() );
+			logger.info("작성일 : " + boardVO.getRegDt() );
 
-			logger.info("수정일 : " + boardVO.getEdit_dt() );
+			logger.info("수정일 : " + boardVO.getEditDt() );
 
 		} else {
 
@@ -111,7 +111,7 @@ public class BoardDAOTest {
 
 		BoardVO boardVO = new BoardVO();
 
-		boardVO.setCate_cd("1");
+		boardVO.setCateCd("1");
 
 		boardVO.setTitle("첫번째 게시물 입니다.");
 
@@ -119,7 +119,7 @@ public class BoardDAOTest {
 
 		boardVO.setTag("1");
 
-		boardVO.setReg_id("1");
+		boardVO.setRegId("1");
 
 		
 
@@ -149,7 +149,7 @@ public class BoardDAOTest {
 
 		boardVO.setBid(1);
 
-		boardVO.setCate_cd("1");
+		boardVO.setCateCd("1");
 
 		boardVO.setTitle("첫번째 게시물 입니다-수정 합니다.");
 
