@@ -33,7 +33,6 @@ public class BoardController {
 		Search search = new Search();
 
 		search.setSearchType(searchType);
-
 		search.setKeyword(keyword);
 		
 		
@@ -50,9 +49,9 @@ public class BoardController {
 		
 		
 		model.addAttribute("paging", search);
-		model.addAttribute("boardList", boardService.readList(paging));
+		model.addAttribute("boardList", boardService.readList(search));
 		
-		System.out.println("boardList값은 바로 이것이다. : "+ boardService.readList(paging));
+		System.out.println("boardList값은 바로 이것이다. : "+ boardService.readList(search));
 		
 		return "board/main";
 	}
