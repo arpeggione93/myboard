@@ -43,7 +43,7 @@
 
 			<if test="searchType=='reg_id' and keyword != null and keyword != '' ">
 
-				AND regId like CONCAT('%', #{keyword}, '%')
+				AND reg_id like CONCAT('%', #{keyword}, '%')
 
 			</if>	
 
