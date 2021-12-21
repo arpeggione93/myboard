@@ -58,3 +58,5 @@ body {
 	padding-bottom : 10pt;
 
 }
+
+.contents_margin{ display:inline-block; width:200px; margin:30px 25px; padding:10px; color:#fff; border:5px solid green; background-color:gray; }

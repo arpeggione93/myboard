@@ -187,11 +187,15 @@
 					
 			</tr>
 			<tr>		
-					<td colspan="6" align="left">
-					<p><h6 style = "display:inline">작성자  ${commentVO.regId } 님 : &nbsp;</h6>  ${commentVO.content }
+					
+					<td colspan = "6" align="left">
+					
+					<p><h6 style = "display:inline" class="board_author">작성자  ${commentVO.regId } 님  &nbsp;</h6><br><br> <br> 
+					
+					<span class = "board_date" margin-bottom = "10px">${commentVO.content }</span>
 					</td>
-			<br>
-			<br>
+					
+		
 					
 					
 			
