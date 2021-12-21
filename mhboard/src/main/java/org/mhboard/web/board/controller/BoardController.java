@@ -1,10 +1,13 @@
 package org.mhboard.web.board.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.mhboard.web.board.service.BoardService;
 import org.mhboard.web.board.vo.BoardVO;
+import org.mhboard.web.board.vo.CommentVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -85,7 +89,11 @@ public class BoardController {
 		
 		 session.setAttribute("Content", boardService.readContent(bid));
 		
-		 System.out.println("값이 왜 안나오냐? " + session.getAttribute("Content"));
+		 //상세 내용 페이지로 이동할 때, 댓글을 입력할 수 있는 폼이 생성되어야 하기 때문
+		 List<CommentVO> commentVO = boardService.readComment(bid);
+		 session.setAttribute("commentVO", commentVO);
+		 
+		 System.out.println("값이 왜 안나오냐? " + session.getAttribute("Content") + session.getAttribute("commentVO"));
 		 				return "board/Content";
 			}
 	
@@ -136,5 +144,32 @@ public class BoardController {
 		}
 		
 		
+		
+		//댓글 기능 구현중
+		
+		//댓글 내용 수정 폼 호출
+		@RequestMapping(value = "/updateComment", method = RequestMethod.GET)
+		public String updateCommentGET(CommentVO commentVO, HttpSession session) throws Exception{
+			
+			System.out.println("과연 무슨 댓글이 넘어왔을까? " + commentVO);
+			session.setAttribute("updateComment", boardService.readUpdateComment(commentVO.getCid()));
+			
+			return "board/updateComment";
+			
+		}
+
+		//댓글 내용 수정
+		@RequestMapping(value = "/updateComment", method = RequestMethod.POST)
+		public String updateCommentPOST(CommentVO commentVO, RedirectAttributes rttr) throws Exception{
+					
+			boardService.updateComment(commentVO);
+			
+				String url = "redirect:/board/readContent?bid=";
+				
+				url = url + commentVO.getBid();
+			
+				return url ;
+					
+				}
 		
 }

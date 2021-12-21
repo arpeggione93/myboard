@@ -46,7 +46,8 @@ public interface BoardService {
 	 //댓글 삭제
 	public int deleteComment(int cid) throws Exception;
 	
-	
+	//수정할 댓글 불러오기
+	public CommentVO readUpdateComment(int cid) throws Exception;
 	
 	
 }

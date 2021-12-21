@@ -40,4 +40,7 @@ public interface BoardDAO {
 	 //댓글 삭제
 	 int deleteComment(int cid) throws Exception;
 	 
+	//수정할 댓글 불러오기
+	 CommentVO readUpdateComment(int cid) throws Exception;
+	 
 }

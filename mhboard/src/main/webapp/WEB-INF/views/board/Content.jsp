@@ -53,13 +53,28 @@
 
     var url = "${pageContext.request.contextPath}/board/delete";
 
-    url = url + "?bid=" + ${Content.bid};
+    	url = url + "?bid=" + ${Content.bid};
 
 		location.href = url;
 
 	});
 	
 	
+	
+	
+	<%-- 댓글 수정 이벤트 --%>
+	$(document).on('click', '#commentUpdateBtn', function(){
+	
+		
+		var url = "${pageContext.request.contextPath}/board/updateComment";
+		
+			url = url + "?bid=" + ${Content.bid};
+			
+			url = url + "&cid="+$(this).attr("data-cid");
+		
+		location.href = url;
+		
+	});
 	
 	
 	
@@ -107,6 +122,48 @@
 				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
 
 			</div>
+
+
+
+	<!-- 댓글 창 추가 -->
+
+
+	<div id = "comment">
+	
+		<ol class = "commentList">
+		
+			<c:forEach items = "${commentVO }" var = "commentVO">
+			
+				<li>
+				
+					<p>
+					작성자 : ${commentVO.regId }<br/>
+					작성일 : ${commentVO.regDt }<br/>
+					</p>
+					
+					<p>작성 내용 : ${commentVO.content }</p>
+					
+					<div>
+						<button type="button" class = "commentUpdateBtn" id = "commentUpdateBtn" data-cid ="${commentVO.cid }">수정</button>
+						<button type="button" class = "commentDeleteBtn" id = "commentDeleteBtn" data-cid ="${commentVO.cid }">삭제</button>
+						
+					</div>
+					
+					</li>
+			
+			
+			</c:forEach>
+		
+		
+		</ol>
+	
+	
+	</div>
+	
+	
+	<!-- 댓글창 추가 여기까지 -->
+
+
 
 		</div>
 

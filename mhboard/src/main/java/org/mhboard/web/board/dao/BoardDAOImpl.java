@@ -103,6 +103,11 @@ public class BoardDAOImpl implements BoardDAO{
   		 
   	 }
     
-	
+    //수정할 댓글 불러오기
+  	public CommentVO readUpdateComment(int cid) throws Exception{
+  		
+  		return sqlSession.selectOne(NAMESPACE2 + ".readUpdateComment",cid);
+  		
+  	}
 	
 }

@@ -26,7 +26,7 @@ FROM
 	mh_comment
 WHERE
 	bid = #{bid}
-ORDER BY reg_dt desc
+ORDER BY reg_dt asc
 
 </select>
 
@@ -45,6 +45,26 @@ VALUES (
 </insert>
 
 
+<!-- 수정할 댓글 불러오기 -->
+<select id = "readUpdateComment" resultType = "commentVO" parameterType = "commentVO">
+
+SELECT
+	cid,
+	bid,
+	content,
+	reg_id,
+	reg_dt,
+	edit_dt
+FROM
+	mh_comment
+WHERE
+	cid = #{cid}
+
+
+</select>
+
+
+
 <!-- 댓글 수정 -->
 <update id = "updateComment" parameterType = "commentVO">
 
@@ -54,6 +74,7 @@ UPDATE mh_comment SET
 WHERE
 	CID = #{cid}
 </update>
+
 
 
 

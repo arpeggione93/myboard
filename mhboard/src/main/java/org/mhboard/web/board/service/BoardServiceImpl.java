@@ -100,5 +100,12 @@ public class BoardServiceImpl implements BoardService {
 		}
 		
 		
+		//수정할 댓글 불러오기
+		public CommentVO readUpdateComment(int cid) throws Exception{
+			
+				return boardDAO.readUpdateComment(cid);
+			
+		}
+		
 		
 }
