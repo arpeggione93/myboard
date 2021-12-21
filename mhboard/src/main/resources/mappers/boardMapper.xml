@@ -84,9 +84,9 @@
 
 			</if>
 
-			<if test="searchType=='regㅑd'">
+			<if test="searchType=='regId'">
 
-				AND regㅑd like CONCAT('%', #{keyword}, '%')
+				AND regId like CONCAT('%', #{keyword}, '%')
 
 			</if>
 
