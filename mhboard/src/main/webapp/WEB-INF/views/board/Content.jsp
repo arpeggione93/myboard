@@ -5,7 +5,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
-
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 
 
@@ -49,12 +48,15 @@
 
 	<%--삭제 버튼 클릭 이벤트--%>
 
-	$(document).on('click', '#btnDelete', function(){
+	$(document).on('click', '#commentDeleteBtn', function(){
 
-    var url = "${pageContext.request.contextPath}/board/delete";
+    var url = "${pageContext.request.contextPath}/board/deleteComment";
 
-    	url = url + "?bid=" + ${Content.bid};
-
+   	    url = url + "?bid=" + ${Content.bid};
+	
+		url = url + "&cid="+$(this).attr("data-cid");
+    
+    
 		location.href = url;
 
 	});
@@ -75,6 +77,16 @@
 		location.href = url;
 		
 	});
+	
+	<%-- 댓글 작성 이벤트 --%>
+	<%-- 
+	$(document).on('click', '#commentWriteBtn', function(){
+	
+		var url = "${pageContext.request.contextPath}/board/writeComment";
+		
+		location.href = url;
+		
+	}); --%>
 	
 	
 	
@@ -163,6 +175,37 @@
 	
 	<!-- 댓글창 추가 여기까지 -->
 
+
+
+
+	<!-- 댓글 작성창 추가 -->
+<div class="container">
+	<div class="form-group">
+		<form method="post" action = " ${pageContext.request.contextPath}/board/writeComment ">
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+				<tr>
+					<td style="border-bottom:none;" valign="middle"><br></td>
+					<td><input type="hidden" name="bid" value="${Content.bid}" readonly="readonly"/></td>
+					
+					<td><div class="mb-3">
+
+					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+
+				</div>
+					</td>
+					<td><input type="text" style="height:20px, weidth: 20px" class="form-control" placeholder="작성자" name = "regId"></td>
+					<td><br><br><input type="submit" class = "commentWriteBtn" id = "commentWriteBtn" value = "댓글등록"></input>
+						</td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="file" name="fileName"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+
+	<!-- 댓글 작성창 여기까지 -->
 
 
 		</div>

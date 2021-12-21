@@ -50,7 +50,7 @@ public class CommentVO {
 	
 	@Override
 	public String toString() {
-		return "CommnetVO [cid=" + cid + ", bid=" + bid + ", content=" + content + ", regId=" + regId + ", regDt="
+		return "CommentVO [cid=" + cid + ", bid=" + bid + ", content=" + content + ", regId=" + regId + ", regDt="
 				+ regDt + ", editDt=" + editDt + "]";
 	}
 	

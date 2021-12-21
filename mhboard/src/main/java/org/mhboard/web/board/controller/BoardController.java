@@ -74,7 +74,7 @@ public class BoardController {
 	//글작성 요청
 	//RedirectAttributes의 경우, 뒤로가기 버튼을 통해 같은 글을 도배하는 행위를 방지하기 위함
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String writePOST(BoardVO boardVO, HttpSession session, RedirectAttributes rttr) throws Exception {
+	public String writePOST(BoardVO boardVO, RedirectAttributes rttr) throws Exception {
 		
 		boardService.write(boardVO);
 	
@@ -171,5 +171,50 @@ public class BoardController {
 				return url ;
 					
 				}
+		
+		//댓글내용 삭제 폼
+		@RequestMapping(value = "/deleteComment", method = RequestMethod.GET)
+		public String deleteCommentGET(CommentVO commentVO, HttpSession session) throws Exception{
+			
+			session.setAttribute("deleteComment", boardService.readUpdateComment(commentVO.getCid()));
+			
+			return "board/deleteComment";
+			
+		}
+		
+		//댓글내용 삭제
+		@RequestMapping(value = "/deleteComment", method = RequestMethod.POST)
+		public String deleteCommentPOST(CommentVO commentVO, RedirectAttributes rttr) throws Exception{
+			
+			
+			System.out.println("삭제될 댓글 내용은 뭐지? " +commentVO);
+			
+			//댓글 삭제 이전에 미리 bid를 이용하여 url를 저장한 후, 삭제작업을 진행하는것;
+			String url = "redirect:/board/readContent?bid=";
+			
+			url = url + commentVO.getBid();
+			
+			boardService.deleteComment(commentVO.getCid());
+		
+			return url ;
+			
+		}
+		
+		//댓글 작성
+		@RequestMapping(value = "/writeComment", method = RequestMethod.POST)
+		public String writeCommentPOST(CommentVO commentVO, RedirectAttributes rttr) throws Exception{
+			
+			System.out.println("댓글 작성 직전 확인 중 : " + commentVO);
+			
+			boardService.writeComment(commentVO);
+			
+			String url = "redirect:/board/readContent?bid=";
+			
+			url = url + commentVO.getBid();
+			
+			return url;
+				
+		}
+		
 		
 }
