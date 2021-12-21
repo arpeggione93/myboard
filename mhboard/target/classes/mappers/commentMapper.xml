@@ -52,7 +52,7 @@ UPDATE mh_comment SET
 	CONTENT = #{content},
 	EDIT_DT = #{editDt}
 WHERE
-	RID = #{rid}
+	CID = #{cid}
 </update>
 
 
@@ -61,7 +61,7 @@ WHERE
 <delete id = "deleteComment" parameterType="int">
 DELETE FROM mh_comment
 WHERE
-	RID = #{rid}
+	CID = #{cid}
 </delete>
 
 

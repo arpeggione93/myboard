@@ -3,6 +3,7 @@ package org.mhboard.web.board.service;
 import java.util.List;
 
 import org.mhboard.web.board.vo.BoardVO;
+import org.mhboard.web.board.vo.CommentVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,25 @@ public interface BoardService {
 
 	//페이징처리(총 게시물 갯수)
 	public int readListCnt(Search search) throws Exception;
+	
+	
+	
+	 //댓글 기능들
+	 
+	 //댓글 불러오기
+	public List<CommentVO> readComment(int bid) throws Exception;
+	 
+	 //댓글 작성
+	public int writeComment(CommentVO commentVO) throws Exception;
+	 
+	 //댓글 수정
+	public int updateComment(CommentVO commentVO) throws Exception;
+	 
+	 //댓글 삭제
+	public int deleteComment(int cid) throws Exception;
+	
+	
+	
 	
 }
 

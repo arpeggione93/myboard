@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.mhboard.web.board.dao.BoardDAO;
 import org.mhboard.web.board.vo.BoardVO;
+import org.mhboard.web.board.vo.CommentVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.springframework.stereotype.Service;
@@ -63,4 +64,41 @@ public class BoardServiceImpl implements BoardService {
 		}
 		
 	
+		
+		 //댓글 기능들
+		 
+		 //댓글 불러오기
+		@Override
+		public List<CommentVO> readComment(int bid) throws Exception{
+			
+			return boardDAO.readComment(bid);
+			
+		}
+		 
+		 //댓글 작성
+		@Override
+		public int writeComment(CommentVO commentVO) throws Exception{
+			
+			return boardDAO.writeComment(commentVO);
+			
+		}
+		 
+		 //댓글 수정
+		@Override
+		public int updateComment(CommentVO commentVO) throws Exception{
+			
+			return boardDAO.updateComment(commentVO);
+			
+		}
+		 
+		 //댓글 삭제
+		@Override
+		public int deleteComment(int cid) throws Exception{
+			
+			return boardDAO.deleteComment(cid);
+			
+		}
+		
+		
+		
 }

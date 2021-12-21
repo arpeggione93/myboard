@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.mhboard.web.board.vo.BoardVO;
+import org.mhboard.web.board.vo.CommentVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,9 @@ import org.springframework.stereotype.Repository;
 public class BoardDAOImpl implements BoardDAO{
 
 	private static final String NAMESPACE = "org.mhboard.web.mappers.boardMapper";
+	private static final String NAMESPACE2 = "org.mhboard.web.mappers.commentMapper";
+	
+	
 	
 	private SqlSession sqlSession;
 
@@ -65,6 +69,40 @@ public class BoardDAOImpl implements BoardDAO{
     	return sqlSession.selectOne(NAMESPACE + ".readListCnt", search);
     }
 	 
+    
+    
+    //댓글 불러오기
+    @Override
+  	 public List<CommentVO> readComment(int bid) throws Exception{
+  		 
+  		return sqlSession.selectList(NAMESPACE2 + ".readComment", bid);
+  		 
+  	 }
+  	 
+  	 //댓글 작성
+    @Override
+  	 public int writeComment(CommentVO commentVO) throws Exception{
+  		 
+  		 return sqlSession.insert(NAMESPACE2 + ".writeComment", commentVO);
+  		 
+  	 }
+  	 
+  	 //댓글 수정
+    @Override
+  	 public int updateComment(CommentVO commentVO) throws Exception{
+  		 
+  		 return sqlSession.update(NAMESPACE2 + ".updateComment", commentVO);
+  		 
+  	 }
+  	 
+  	 //댓글 삭제
+    @Override
+  	 public int deleteComment(int cid) throws Exception{
+  		 
+  		 return sqlSession.delete(NAMESPACE2 + ".deleteComment", cid); 
+  		 
+  	 }
+    
 	
 	
 }

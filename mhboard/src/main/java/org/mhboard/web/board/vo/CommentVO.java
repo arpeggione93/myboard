@@ -1,6 +1,6 @@
 package org.mhboard.web.board.vo;
 
-public class CommnetVO {
+public class CommentVO {
 
 	
 	private int cid;
