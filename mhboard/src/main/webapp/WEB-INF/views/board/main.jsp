@@ -251,7 +251,7 @@ function fn_prev(page, range, contentSize) {
 
 					<option value="title">제목</option>
 
-					<option value="Content">본문</option>
+					<option value="content">본문</option>
 
 					<option value="reg_id">작성자</option>
 

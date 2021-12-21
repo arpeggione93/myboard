@@ -31,7 +31,7 @@
 
 			<if test="searchType=='title' and keyword != null and keyword != '' ">
 
-				AND TITLE like CONCAT('%', #{keyword}, '%')
+				AND TITLE like CONTCAT('%', #{keyword}, '%')
 
 			</if>
 
@@ -41,7 +41,7 @@
 
 			</if>
 
-			<if test="searchType=='regId' and keyword != null and keyword != '' ">
+			<if test="searchType=='reg_id' and keyword != null and keyword != '' ">
 
 				AND regId like CONCAT('%', #{keyword}, '%')
 
