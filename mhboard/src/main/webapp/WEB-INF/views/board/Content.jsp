@@ -15,6 +15,9 @@
 
 <head>
 
+<!-- 부트스트랩 css 사용 -->
+<link rel="stylesheet" href="/resource/css/bootstrap.css">
+
 <meta charset="UTF-8">
 
 
@@ -113,19 +116,18 @@
 
 				<div class="board_info_box">
 
-					<span class="board_author"><c:out value="${Content.regId}"/>,</span><span class="board_date"><c:out value="${Content.regDt}"/></span>
+					<span class="board_author">작성자 : <c:out value="${Content.regId}"/></span>
+					<br>
+					<span class="board_date">작성일 : <c:out value="${Content.regDt}"/></span>
 
 				</div>
 
 				<div class="board_content">${Content.content}</div>
 
-				<div class="board_tag">TAG : <c:out value="${Content.tag}"/></div>
-
-			</div>
-
-			
-
-			<div style="margin-top : 20px">
+				<div class="board_tag">TAG : <c:out value="${Content.tag}"/> 	
+				
+				
+				<div style="margin-top : 20px">
 
 				<button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
 
@@ -134,41 +136,73 @@
 				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
 
 			</div>
+			
+			</div>
+
+
+		
+
+
+			</div>
+
+			
+
+		
 
 
 
 	<!-- 댓글 창 추가 -->
 
 
-	<div id = "comment">
+	<div class = "container" id = "comment">
 	
-		<ol class = "commentList">
-		
-			<c:forEach items = "${commentVO }" var = "commentVO">
+	
+		<div class="row">
 			
-				<li>
+			<table class="table table-hover " style="text-align: center; border: 1px solid #dddddd">
+			
+			<c:forEach items = "${commentVO }" var = "commentVO">
+			<tbody>
+			<tr>
+			
+			
 				
-					<p>
-					작성자 : ${commentVO.regId }<br/>
-					작성일 : ${commentVO.regDt }<br/>
-					</p>
 					
-					<p>작성 내용 : ${commentVO.content }</p>
+					<td align ="left">
+					${commentVO.regDt }<br/>
+					</td>
+					<td colspan = "2"></td>
+					
+					<td align="right">
 					
 					<div>
-						<button type="button" class = "commentUpdateBtn" id = "commentUpdateBtn" data-cid ="${commentVO.cid }">수정</button>
-						<button type="button" class = "commentDeleteBtn" id = "commentDeleteBtn" data-cid ="${commentVO.cid }">삭제</button>
-						
-					</div>
+						<button type="button" class = "btn btn-sm btn-primary"  id = "commentUpdateBtn" data-cid ="${commentVO.cid }">수정</button>
+						<button type="button" class = "btn btn-sm btn-primary"  id = "commentDeleteBtn" data-cid ="${commentVO.cid }">삭제</button>
+					</div>	
+				
 					
-					</li>
+					</td>
+					
+					
+					
+			</tr>
+			<tr>		
+					<td colspan="6" align="left">
+					<p><h6 style = "display:inline">작성자  ${commentVO.regId } 님 : &nbsp;</h6>  ${commentVO.content }
+					</td>
+			<br>
+			<br>
+					
+					
 			
 			
-			</c:forEach>
+			
 		
-		
-		</ol>
-	
+		</tr>
+		</tbody>
+		</c:forEach>
+		</table>
+	</div>
 	
 	</div>
 	
@@ -179,26 +213,34 @@
 
 
 	<!-- 댓글 작성창 추가 -->
+	<br>
 <div class="container">
 	<div class="form-group">
 		<form method="post" action = " ${pageContext.request.contextPath}/board/writeComment ">
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+			<table class="table table-hover" style="text-align: center; border: 1px solid #dddddd">
 				<tr>
-					<td style="border-bottom:none;" valign="middle"><br></td>
-					<td><input type="hidden" name="bid" value="${Content.bid}" readonly="readonly"/></td>
+					<!-- <td style="border-bottom:none;" valign="middle"><br></td>
+					 -->
+					 
 					
-					<td><div class="mb-3">
+					
+					<td style = "border-bottom:none;" valign = "middle"><input type="hidden" name="bid" value="${Content.bid}" readonly="readonly"/>
+					
+						<input type="text" class="form-control" placeholder="댓글작성자" name = "regId"/>
+					
+					<div class="mb-3">
 
 					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
 
-				</div>
+					</div>
+						
+						
 					</td>
-					<td><input type="text" style="height:20px, weidth: 20px" class="form-control" placeholder="작성자" name = "regId"></td>
-					<td><br><br><input type="submit" class = "commentWriteBtn" id = "commentWriteBtn" value = "댓글등록"></input>
-						</td>
+					
 				</tr>
 				<tr>
-					<td colspan="3"><input type="file" name="fileName"></td>
+				<td><input type="submit" class = "btn btn-sm btn-primary" id = "commentWriteBtn" value = "댓글등록"/></td>
+					<!-- <td colspan="3"><input type="file" name="fileName"></td> -->
 				</tr>
 			</table>
 		</form>
@@ -208,11 +250,16 @@
 	<!-- 댓글 작성창 여기까지 -->
 
 
-		</div>
-
-		
+		</div>		
 
 	</article>
+
+
+<!--  부트스트랩 js 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/resource/js/bootstrap.js"></script>
+
+
 
 </body>
 
