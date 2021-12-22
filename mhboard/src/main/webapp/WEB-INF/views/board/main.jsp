@@ -30,13 +30,7 @@
 
 <style>
 
-body {
 
-padding-top: 70px;
-
-padding-bottom: 30px;
-
-}
 
 </style>
 
@@ -87,8 +81,6 @@ function fn_prev(page, range, contentSize) {
 
 		url = url + "&range=" + range;
 
-		
-
 		location.href = url;
 
 	}
@@ -124,8 +116,6 @@ function fn_prev(page, range, contentSize) {
 		url = url + "?page=" + page;
 
 		url = url + "&range=" + range;
-
-		
 
 		location.href = url;
 
@@ -165,6 +155,8 @@ function fn_prev(page, range, contentSize) {
 <div class="table-responsive">
 
 <table class="table table-striped table-sm">
+
+
 
 
 <h2>MH 개념정리 게시판</h2>

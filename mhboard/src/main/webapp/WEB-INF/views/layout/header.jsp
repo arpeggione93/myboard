@@ -21,7 +21,7 @@
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 
-  <a class="navbar-brand" href="#">Expand at sm</a>
+  <a class="navbar-brand" href="${pageContext.request.contextPath}/board/readList">MH</a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
 
