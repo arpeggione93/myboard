@@ -1,6 +1,7 @@
 package org.mhboard.web.board.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -110,4 +111,10 @@ public class BoardDAOImpl implements BoardDAO{
   		
   	}
 	
+  	//파일 업로드 파트
+  	 public void insertFile(Map<String, Object> map) throws Exception{
+  		 sqlSession.insert(NAMESPACE + ".insertFile", map);
+  	 }
+  	
+  	
 }

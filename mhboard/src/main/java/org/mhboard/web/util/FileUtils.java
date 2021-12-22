@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.mhboard.web.board.vo.BoardVO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -28,14 +29,14 @@ public class FileUtils {
 		Iterator<String> iterator = mpRequest.getFileNames();
 		
 		MultipartFile multipartFile = null;
-		String originalFileName = null;
-		String originalFileExtension = null;
-		String storedFileName = null;
+		String orgFileName = null;
+		String orgFileType = null;
+		String strFileName = null;
 		
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String, Object> listMap = null;
 		
-		int bno = boardVO.getBno();
+		int bid = boardVO.getBid();
 		
 		File file = new File(filePath);
 		if(file.exists() == false) {
@@ -45,17 +46,17 @@ public class FileUtils {
 		while(iterator.hasNext()) {
 			multipartFile = mpRequest.getFile(iterator.next());
 			if(multipartFile.isEmpty() == false) {
-				originalFileName = multipartFile.getOriginalFilename();
-				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-				storedFileName = getRandomString() + originalFileExtension;
+				orgFileName = multipartFile.getOriginalFilename();
+				orgFileType = orgFileName.substring(orgFileName.lastIndexOf("."));
+				strFileName = getRandomString() + orgFileType;
 				
-				file = new File(filePath + storedFileName);
+				file = new File(filePath + strFileName);
 				multipartFile.transferTo(file);
 				listMap = new HashMap<String, Object>();
-				listMap.put("BNO", bno);
-				listMap.put("ORG_FILE_NAME", originalFileName);
-				listMap.put("STORED_FILE_NAME", storedFileName);
-				listMap.put("FILE_SIZE", multipartFile.getSize());
+				listMap.put("bid", bid);
+				listMap.put("orgFileName", orgFileName);
+				listMap.put("strFileName", strFileName);
+				listMap.put("fileSize", multipartFile.getSize());
 				list.add(listMap);
 			}
 		}

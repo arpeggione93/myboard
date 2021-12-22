@@ -7,6 +7,7 @@ import org.mhboard.web.board.vo.CommentVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public interface BoardService {
 
@@ -15,8 +16,8 @@ public interface BoardService {
 	//목록 불러오기 + 페이징처리
 	public List<BoardVO> readList(Search search) throws Exception;
 
-	//글작성
-	public void write(BoardVO boardVO) throws Exception;
+	//글작성 + 파일 업로드 구현중
+	public void write(BoardVO boardVO, MultipartHttpServletRequest mpReq) throws Exception;
 	
 	//게시글 상세 내용 출력
 	public BoardVO readContent(int bid) throws Exception;

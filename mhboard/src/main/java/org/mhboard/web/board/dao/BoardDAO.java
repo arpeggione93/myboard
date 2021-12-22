@@ -1,7 +1,7 @@
 package org.mhboard.web.board.dao;
 
 import java.util.List;
-
+import java.util.Map;
 
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.board.vo.CommentVO;
@@ -43,4 +43,7 @@ public interface BoardDAO {
 	//수정할 댓글 불러오기
 	 CommentVO readUpdateComment(int cid) throws Exception;
 	 
+	 
+	 //파일 업로드 파트
+	 void insertFile(Map<String, Object> map) throws Exception;
 }

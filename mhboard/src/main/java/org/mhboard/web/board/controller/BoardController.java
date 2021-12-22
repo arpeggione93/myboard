@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -76,9 +77,10 @@ public class BoardController {
 	//글작성 요청
 	//RedirectAttributes의 경우, 뒤로가기 버튼을 통해 같은 글을 도배하는 행위를 방지하기 위함
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String writePOST(BoardVO boardVO, RedirectAttributes rttr) throws Exception {
+	public String writePOST(BoardVO boardVO, RedirectAttributes rttr, MultipartHttpServletRequest mpReq) throws Exception {
 		
-		boardService.write(boardVO);
+		//파일 업로드 추가
+		boardService.write(boardVO, mpReq);
 	
 		System.out.println("글 작성 완료 :) ");
 		

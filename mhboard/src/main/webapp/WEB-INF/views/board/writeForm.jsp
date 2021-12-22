@@ -82,7 +82,7 @@ body {
 
 			<h2>게시글 작성</h2>
 
-			<form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/write">
+			<form name="form" id="form" role="form" method="post" enctype = "multipart/form-data" action="${pageContext.request.contextPath}/board/write">
 
 				<div class="mb-3">
 
@@ -125,7 +125,9 @@ body {
 
 				</div>
 
-			<td colspan="3"><input type="file" name="fileName">
+			<td colspan="3">
+			<input type="file" name="file">
+			</td>
 
 			</form>
 

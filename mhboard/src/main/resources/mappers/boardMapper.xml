@@ -121,6 +121,9 @@
 
 	<!-- 게시물 작성 -->
 	<insert id = "write" parameterType = "boardVO">
+	
+	
+		
 		INSERT INTO mh_board (CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT)
 		VALUES(
 		
@@ -134,7 +137,33 @@
 		now()
 		)
 	
+	
+	  <selectKey resultType="int" keyProperty="bid" order="AFTER">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+	
+	
 	</insert>
+
+	<!-- 파일 업로드 구현중 -->
+	<insert id = "insertFile" parameterType = "hashMap">
+	
+	
+	
+		INSERT INTO mh_file (bid, org_file_name, str_file_name, file_size, upload_date)
+		VALUES(
+		
+			#{bid},
+			#{orgFileName},
+			#{strFileName},
+			#{fileSize},
+			now()
+		)
+		
+	
+	</insert>
+
+
 
 
 	<!-- 수정하기 -->

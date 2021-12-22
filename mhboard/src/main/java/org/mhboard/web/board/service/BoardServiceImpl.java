@@ -1,7 +1,9 @@
 package org.mhboard.web.board.service;
 
 import java.util.List;
+import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.mhboard.web.board.dao.BoardDAO;
@@ -9,11 +11,16 @@ import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.board.vo.CommentVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
+import org.mhboard.web.util.FileUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Service
 public class BoardServiceImpl implements BoardService {
 
+	@Resource(name="fileUtils")
+	private FileUtils fileUtils;
+	
 	@Inject
 	private BoardDAO boardDAO;
 
@@ -24,9 +31,14 @@ public class BoardServiceImpl implements BoardService {
 
 		//글작성
 		@Override
-		public void write(BoardVO boardVO) throws Exception {
+		public void write(BoardVO boardVO, MultipartHttpServletRequest mpReq) throws Exception {
 			boardDAO.write(boardVO);
-
+			
+			List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(boardVO, mpReq);
+			int size = list.size();
+			for(int i = 0; i<size; i++) {
+				boardDAO.insertFile(list.get(i));
+			}
 		}
 
 
