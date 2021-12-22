@@ -160,12 +160,12 @@ function fn_prev(page, range, contentSize) {
 
 <div class="table-responsive">
 
-<table class="table table-striped table-sm">
+<table class="table table-bordered">
 
 
 
 
-<h2>MH 개념정리 게시판</h2>
+<h2>개념 정리 게시판</h2>
 
 		<colgroup>
 			<col style="width:5%;" />
