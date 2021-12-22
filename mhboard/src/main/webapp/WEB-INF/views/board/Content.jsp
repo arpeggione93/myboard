@@ -91,6 +91,14 @@
 		
 	}); --%>
 	
+	<%-- 파일 다운로드 이벤트 --%>
+	function fn_fileDown(fid){
+		var formObj = $("form[name='test']");
+		$("#fid").attr("value", fid);
+		formObj.attr("action", "/board/fileDown");
+		formObj.submit();
+	}
+	
 	
 	
 </script>
@@ -130,9 +138,13 @@
 				<br>
 				
 				<span>파일 목록</span>
+				<form name = "test">
+						<input type="hidden" id="fid" name="fid" value=""> 	
+				</form>
 				<div class="form-group" style="border: 1px solid #dbdbdb;">
 					<c:forEach var="file" items="${file}">
 						<a href="#" onclick="fn_fileDown('${file.fid}'); return false;">${file.org_file_name}</a>(${file.file_size}kb)<br>
+						
 					</c:forEach>
 				</div>
 				

@@ -1,9 +1,12 @@
 package org.mhboard.web.board.controller;
 
+import java.io.File;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mhboard.web.board.service.BoardService;
@@ -98,7 +101,7 @@ public class BoardController {
 		 List<CommentVO> commentVO = boardService.readComment(bid);
 		 session.setAttribute("commentVO", commentVO);
 		 
-		 //파일 다운로드 구현중
+		 //파일 조회 구현중
 		 List<Map<String, Object>> fileList = boardService.selectFile(bid);
 		session.setAttribute("file", fileList);
 		
@@ -107,6 +110,25 @@ public class BoardController {
 		 				return "board/Content";
 
 	}
+	
+	@RequestMapping(value="/fileDown")
+	public void fileDown(@RequestParam Map<String, Object> map, HttpServletResponse res) throws Exception{
+		Map<String, Object> resultMap = boardService.selectFileInfo(map);
+		String str_file_name = (String) resultMap.get("str_file_name");
+		String org_file_name = (String) resultMap.get("org_file_name");
+		
+		// 파일을 저장했던 위치에서 첨부파일을 읽어 byte[]형식으로 변환한다.
+		byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("C:\\mp\\file\\"+str_file_name));
+		
+		res.setContentType("application/octet-stream");
+		res.setContentLength(fileByte.length);
+		res.setHeader("Content-Disposition",  "attachment; fileName=\""+URLEncoder.encode(org_file_name, "UTF-8")+"\";");
+		res.getOutputStream().write(fileByte);
+		res.getOutputStream().flush();
+		res.getOutputStream().close();
+		
+	}
+	
 	
 	
 	//게시글 내용 수정폼 불러오기
