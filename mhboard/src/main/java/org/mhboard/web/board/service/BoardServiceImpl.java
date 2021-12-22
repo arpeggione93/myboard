@@ -71,10 +71,11 @@ public class BoardServiceImpl implements BoardService {
 			
 			boardDAO.update(boardVO);
 			
+			
 			List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(boardVO, files, fileNames, mpReq);
 			Map<String, Object> tempMap = null;
 			int size = list.size();
-			for(int i = 0; i<size; i++) {
+			for(int i = 0; i < size; i++) {
 				tempMap = list.get(i);
 				if(tempMap.get("IS_NEW").equals("Y")) {
 					boardDAO.insertFile(tempMap);

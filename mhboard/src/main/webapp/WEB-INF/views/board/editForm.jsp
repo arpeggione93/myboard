@@ -105,7 +105,7 @@ body {
 
 			<h2>게시글 수정</h2>
 
-			<form name="form" id="form"  enctype= "multipart/form-data" role="form" method="post" action="${pageContext.request.contextPath}/board/update">
+			<form name="form" id="form"  enctype = "multipart/form-data" role="form" method="post" action="${pageContext.request.contextPath}/board/update">
 				
 				<div class="mb-3">
 					<input type="hidden" class="form-control" name="bid" id="bid" value = "${Content.bid}"  readonly>
@@ -142,7 +142,7 @@ body {
 										<input type="hidden" id="fileNameDel" name="fileNameDel[]" value=""> 
 					
 
-			</form>
+			
 
 		<table>
 		
@@ -164,7 +164,7 @@ body {
 		
 		</table>
 
-
+</form>
 	<div>
 	
 	<button type="button" class="fileAdd_btn btn-sm btn-primary">파일추가</button>

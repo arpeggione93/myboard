@@ -152,7 +152,7 @@ public class BoardController {
 				 @RequestParam(value="fileNameDel[]") String[] fileNames,
 				 MultipartHttpServletRequest mpReq) throws Exception{
 			
-			System.out.println("이 값 확인좀" +fileNames);
+			System.out.println("이 값 확인좀" + " " + files +" " + boardVO +" " + bid +" " +fileNames);
 			boardService.update(boardVO, files, fileNames, mpReq);
 			
 			System.out.println("제대로 글이 수정 되었나??" + boardService.readContent(bid));
