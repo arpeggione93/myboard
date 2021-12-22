@@ -32,7 +32,7 @@
 
 
 
-<title>MHBoard</title>
+<title>MH</title>
 
 <style>
 
@@ -160,12 +160,12 @@ function fn_prev(page, range, contentSize) {
 
 <div class="table-responsive">
 
-<table class="table table-bordered">
+<table class="table table-hover">
 
 
 
 
-<h2>개념 정리 게시판</h2>
+<h2>개념 정리</h2>
 
 		<colgroup>
 			<col style="width:5%;" />
@@ -224,11 +224,7 @@ function fn_prev(page, range, contentSize) {
 
 
 <!-- 글쓰기 버튼 -->
-<div >
 
-			<button type="button" class="btn btn-sm btn-primary" id="btnWriteForm">글쓰기</button>
-
-		</div>
 <!-- 여기까지 버튼 -->
 
 
@@ -237,9 +233,52 @@ function fn_prev(page, range, contentSize) {
 
 <!-- paging{start} -->
 
-	<!-- search{s} -->
+	
 
 <div class="container-fluid">
+
+
+
+		
+
+<br>
+<div id ="container-fluid">
+	<div id="paginationBox">
+		<ul class="pagination">
+			<c:if test="${paging.prev}">
+				<li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${paging.page}', '${paging.range}', '${paging.contentSize}')">Previous</a></li>
+			</c:if>
+
+			<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="idx">
+
+				<li class="page-item <c:out value="${paging.page == idx ? 'active' : ''}"/> "><a class="page-link" href="#" onClick="fn_paging('${idx}', '${paging.range}', '${paging.contentSize}')"> ${idx} </a></li>
+
+			</c:forEach>
+
+			<c:if test="${paging.next}">
+
+				<li class="page-item"><a class="page-link" href="#" onClick="fn_next('${paging.range}', 
+
+'${paging.range}', '${paging.contentSize}')" >Next</a></li>
+
+			</c:if>
+
+		</ul>
+
+	</div>
+	
+	
+	</div>
+
+
+	<!-- paging{end} -->
+
+
+			<button type="button" class="btn btn-sm btn-primary" id="btnWriteForm">글쓰기</button>
+
+
+<!-- search{s} -->
+
 		<div class="form-group row justify-content-center">
 
 			<div class="w100" style="padding-right:10px">
@@ -276,40 +315,9 @@ function fn_prev(page, range, contentSize) {
 
 
 
-<br>
-<br>
-<div id ="container-fluid">
-	<div id="paginationBox">
-		<ul class="pagination">
-			<c:if test="${paging.prev}">
-				<li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${paging.page}', '${paging.range}', '${paging.contentSize}')">Previous</a></li>
-			</c:if>
 
-				
 
-			<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="idx">
 
-				<li class="page-item <c:out value="${paging.page == idx ? 'active' : ''}"/> "><a class="page-link" href="#" onClick="fn_paging('${idx}', '${paging.range}', '${paging.contentSize}')"> ${idx} </a></li>
-
-			</c:forEach>
-
-				
-
-			<c:if test="${paging.next}">
-
-				<li class="page-item"><a class="page-link" href="#" onClick="fn_next('${paging.range}', 
-
-'${paging.range}', '${paging.contentSize}')" >Next</a></li>
-
-			</c:if>
-
-		</ul>
-
-	</div>
-	
-	</div>
-
-	<!-- paging{end} -->
 
 
 <!-- 여기까지 페이징처리 버튼 -->
