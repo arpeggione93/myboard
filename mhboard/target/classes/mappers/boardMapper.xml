@@ -175,6 +175,8 @@
 		mh_file
 	WHERE
 		bid = #{bid}
+		AND del_type = 'N'
+		ORDER BY fid asc
 	
 	</select>
 	
@@ -188,7 +190,12 @@
 	WHERE fid = #{fid}
 	</select>
 	
-	
+	<!-- 삭제된 첨부파일 type 변경 쿼리 -->
+	<update id ="updateFile" parameterType = "hashMap">
+		UPDATE mh_file SET
+		del_type = 'Y'
+		WHERE fid = #{fid}
+	</update>
 	
 
 	<!-- 수정하기 -->

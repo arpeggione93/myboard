@@ -63,6 +63,53 @@ public class FileUtils {
 		return list;
 	}
 	
+	
+	
+	//다중파일 처리 메서드
+	public List<Map<String, Object>> parseUpdateFileInfo(BoardVO boardVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception{ 
+		Iterator<String> iterator = mpRequest.getFileNames();
+		MultipartFile multipartFile = null;
+		String orgFileName = null;
+		String orgFileType = null;
+		String strFileName = null;
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		Map<String, Object> listMap = null; 
+		int bid = boardVO.getBid();
+		while(iterator.hasNext()){ 
+			multipartFile = mpRequest.getFile(iterator.next()); 
+			if(multipartFile.isEmpty() == false){ 
+				orgFileName = multipartFile.getOriginalFilename(); 
+				orgFileType = orgFileName.substring(orgFileName.lastIndexOf(".")); 
+				strFileName = getRandomString() + orgFileType; 
+				multipartFile.transferTo(new File(filePath + strFileName)); 
+				listMap = new HashMap<String,Object>();
+				listMap.put("IS_NEW", "Y");
+				listMap.put("bid", bid); 
+				listMap.put("org_file_name", orgFileName);
+				listMap.put("str_file_name", strFileName); 
+				listMap.put("fileSize", multipartFile.getSize());
+				list.add(listMap); 
+			} 
+		}
+		if(files != null && fileNames != null){ 
+			for(int i = 0; i<fileNames.length; i++) {
+					listMap = new HashMap<String,Object>();
+                    listMap.put("IS_NEW", "N");
+					listMap.put("fid", files[i]); 
+					list.add(listMap); 
+			}
+		}
+		return list; 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static String getRandomString() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}

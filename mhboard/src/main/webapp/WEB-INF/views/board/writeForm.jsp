@@ -41,9 +41,16 @@
 <title>board</title>
 
 <script>
+
+$(document).ready(function(){
+	
+	fn_addFile();
+})
+
 	$(document).on('click', '#btnSave', function(e){
 		e.preventDefault();
 		$("#form").submit();
+		fn_addFile();
 	});
 
 	$(document).on('click', '#btnList', function(e){
@@ -53,8 +60,21 @@
 
 	});
 	
+	</script>
 	
-
+	
+<script type="text/javascript">
+function fn_addFile(){
+	var fileIndex = 1;
+	//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
+	$(".fileAdd_btn").on("click", function(){
+		$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+	});
+	$(document).on("click","#fileDelBtn", function(){
+		$(this).parent().remove();
+		
+	});
+}
 
 </script>
 
@@ -125,9 +145,21 @@ body {
 
 				</div>
 
-			<td colspan="3">
-			<input type="file" name="file">
-			</td>
+			<table> 
+			<tr>
+			<td id ="fileIndex"></td>
+			</tr>
+			
+			</table>
+			
+			
+			<div>
+			<br>
+			<button class="fileAdd_btn" type="button">파일추가</button>	
+			<br>
+			</div>
+			<!-- <input type="file" name="file"/>
+			 -->
 
 			</form>
 

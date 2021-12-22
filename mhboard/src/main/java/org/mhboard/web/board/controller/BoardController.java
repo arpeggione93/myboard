@@ -137,14 +137,20 @@ public class BoardController {
 		
 		session.setAttribute("Content", boardService.readContent(bid));
 		session.setAttribute("boardVO", new BoardVO());
+		
+		List<Map<String, Object>> fileList = boardService.selectFile(bid);
+		session.setAttribute("file", fileList);
+		
 		return "board/editForm";
 	}
 	
 	//게시글 내용 수정
 		@RequestMapping(value = "/update", method = RequestMethod.POST)
-		public String updatePOST(BoardVO boardVO, int bid, HttpSession session) throws Exception{
+		public String updatePOST(BoardVO boardVO, int bid, HttpSession session,  @RequestParam(value="fileNoDel[]") String[] files,
+				 @RequestParam(value="fileNameDel[]") String[] fileNames,
+				 MultipartHttpServletRequest mpReq) throws Exception{
 			
-			boardService.update(boardVO);
+			boardService.update(boardVO, files, fileNames, mpReq);
 			
 			System.out.println("제대로 글이 수정 되었나??" + boardService.readContent(bid));
 			

@@ -26,13 +26,11 @@ public interface BoardService {
 	//파일 다운로드 구현중
 	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
 
-	
-	
 	//게시글 상세 내용 출력
 	public BoardVO readContent(int bid) throws Exception;
 	
-	//게시글 수정 
-	public void update(BoardVO boardVO) throws Exception;
+	//게시글 수정 + 첨부파일 수정
+	public void update(BoardVO boardVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpReq) throws Exception;
 	
 	//게시물 삭제
 	public void delete(int bid) throws Exception;

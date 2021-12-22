@@ -137,6 +137,7 @@
 				<br>
 				<br>
 				
+				<c:if test="${not empty file}">
 				<span>파일 목록</span>
 				<form name = "test">
 						<input type="hidden" id="fid" name="fid" value=""> 	
@@ -147,6 +148,7 @@
 						
 					</c:forEach>
 				</div>
+				</c:if>
 				
 				<div style="margin-top : 20px">
 

@@ -105,6 +105,7 @@ public class BoardDAOImpl implements BoardDAO{
   	 }
     
     //수정할 댓글 불러오기
+    @Override
   	public CommentVO readUpdateComment(int cid) throws Exception{
   		
   		return sqlSession.selectOne(NAMESPACE2 + ".readUpdateComment",cid);
@@ -112,11 +113,13 @@ public class BoardDAOImpl implements BoardDAO{
   	}
 	
   	//파일 업로드 파트
+    @Override
   	 public void insertFile(Map<String, Object> map) throws Exception{
   		 sqlSession.insert(NAMESPACE + ".insertFile", map);
   	 }
   	
   	//파일 조회 구현중
+    @Override
   	public List<Map<String, Object>> selectFile(int bid) throws Exception{
   		 
   		return sqlSession.selectList(NAMESPACE + ".selectFile", bid);
@@ -124,12 +127,21 @@ public class BoardDAOImpl implements BoardDAO{
   	 }
   	
   	//파일 다운로드 구현중
+    @Override
   	 public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception{
   		 
   		 return sqlSession.selectOne(NAMESPACE + ".selectFileInfo", map);
   		 
   	 }
 
+  	//파일 수정 기능 구현중
+    @Override
+  		public void updateFile(Map<String, Object> map) throws Exception{
+  			 
+  			 sqlSession.update(NAMESPACE + ".updateFile", map);
+  			 
+  		 }
+  		 
   	
   	
 }

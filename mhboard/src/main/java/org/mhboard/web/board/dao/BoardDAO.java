@@ -51,6 +51,9 @@ public interface BoardDAO {
 	 List<Map<String, Object>> selectFile(int bid) throws Exception;
 
 	 //파일 다운로드 구현중
-	 public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
+	 Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
 
+	 //파일 수정 기능 구현중
+	 void updateFile(Map<String, Object> map) throws Exception;
+	 
 }
