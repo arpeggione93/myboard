@@ -11,15 +11,21 @@
 
 <meta charset="UTF-8">
 
-
 <!-- jQuery -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
 
+
 <!-- Bootstrap CSS -->
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+
+<!-- common CSS -->
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/common.css">
 
 
 
@@ -150,7 +156,7 @@ function fn_prev(page, range, contentSize) {
 <body>
 
 <article>
-<div class="container">
+<div class="container-fluid">
 
 <div class="table-responsive">
 
@@ -160,8 +166,6 @@ function fn_prev(page, range, contentSize) {
 
 
 <h2>MH 개념정리 게시판</h2>
-
-	
 
 		<colgroup>
 			<col style="width:5%;" />
@@ -235,6 +239,7 @@ function fn_prev(page, range, contentSize) {
 
 	<!-- search{s} -->
 
+<div class="container-fluid">
 		<div class="form-group row justify-content-center">
 
 			<div class="w100" style="padding-right:10px">
@@ -264,7 +269,7 @@ function fn_prev(page, range, contentSize) {
 			</div>
 
 		</div>
-
+</div>
 		<!-- search{e} -->
 
 
@@ -273,6 +278,7 @@ function fn_prev(page, range, contentSize) {
 
 <br>
 <br>
+<div id ="container-fluid">
 	<div id="paginationBox">
 		<ul class="pagination">
 			<c:if test="${paging.prev}">
@@ -300,6 +306,8 @@ function fn_prev(page, range, contentSize) {
 		</ul>
 
 	</div>
+	
+	</div>
 
 	<!-- paging{end} -->
 
@@ -308,6 +316,7 @@ function fn_prev(page, range, contentSize) {
 
 
 </div>
+
 
 </div>
 

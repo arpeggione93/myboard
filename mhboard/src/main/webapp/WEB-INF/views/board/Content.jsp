@@ -104,7 +104,7 @@
 
 	<article>
 
-		<div class="container" role="main">
+		<div class="container-fluid" role="main">
 
 			<h2>게시글 상세내용</h2>
 
@@ -154,7 +154,7 @@
 	<!-- 댓글 창 추가 -->
 
 
-	<div class = "container" id = "comment">
+	<div class = "container-fluid" id = "comment">
 	
 	
 		<div class="row">
@@ -218,7 +218,7 @@
 
 	<!-- 댓글 작성창 추가 -->
 	<br>
-<div class="container">
+<div class="container-fluid">
 	<div class="form-group">
 		<form method="post" action = " ${pageContext.request.contextPath}/board/writeComment ">
 			<table class="table table-hover" style="text-align: center; border: 1px solid #dddddd">
