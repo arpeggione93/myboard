@@ -83,6 +83,7 @@ public class BoardServiceImpl implements BoardService {
 				}
 			
 		}
+		}
 		
 		@Override
 		//게시물 삭제

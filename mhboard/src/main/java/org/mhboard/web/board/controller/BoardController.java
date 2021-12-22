@@ -144,12 +144,15 @@ public class BoardController {
 		return "board/editForm";
 	}
 	
+	
+	
 	//게시글 내용 수정
 		@RequestMapping(value = "/update", method = RequestMethod.POST)
 		public String updatePOST(BoardVO boardVO, int bid, HttpSession session,  @RequestParam(value="fileNoDel[]") String[] files,
 				 @RequestParam(value="fileNameDel[]") String[] fileNames,
 				 MultipartHttpServletRequest mpReq) throws Exception{
 			
+			System.out.println("이 값 확인좀" +fileNames);
 			boardService.update(boardVO, files, fileNames, mpReq);
 			
 			System.out.println("제대로 글이 수정 되었나??" + boardService.readContent(bid));

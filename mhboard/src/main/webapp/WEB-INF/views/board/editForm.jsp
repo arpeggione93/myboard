@@ -29,6 +29,15 @@
 
 <script>
 
+$(document).ready(function(){
+	
+	
+	fn_addFile();
+	
+	
+	})
+
+
 <%-- 수정하기 버튼을 눌렀을 때, 입력 'form'을 전송해주는 버튼임--%>
 	$(document).on('click', '#btnUpdate', function(e){
 		e.preventDefault();
@@ -42,6 +51,30 @@
 		location.href="${pageContext.request.contextPath}/board/readList";
 
 	});
+	
+	
+	
+	<%-- 다중 파일 수정 기능 구현중 --%>
+	function fn_addFile(){
+		var fileIndex = 1;
+		$(".fileAdd_btn").on("click", function(){
+			$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+		});
+		$(document).on("click","#fileDelBtn", function(){
+			$(this).parent().remove();
+			
+		});
+	}
+		var fileNoArry = new Array();
+		var fileNameArry = new Array();
+		
+		function fn_del(value, name){
+			
+			fileNoArry.push(value);
+			fileNameArry.push(name);
+			$("#fileNoDel").attr("value", fileNoArry);
+			$("#fileNameDel").attr("value", fileNameArry);
+		}
 	
 	
 
@@ -72,10 +105,11 @@ body {
 
 			<h2>게시글 수정</h2>
 
-			<form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/update">
+			<form name="form" id="form"  enctype= "multipart/form-data" role="form" method="post" action="${pageContext.request.contextPath}/board/update">
 				
 				<div class="mb-3">
 					<input type="hidden" class="form-control" name="bid" id="bid" value = "${Content.bid}"  readonly>
+					
 				</div>
 
 
@@ -104,8 +138,39 @@ body {
 					<input type="text" class="form-control" name="tag" id="tag" value = "${Content.tag}">
 				</div>
 			
+			<input type="hidden" id="fileNoDel" name="fileNoDel[]" value=""> 
+										<input type="hidden" id="fileNameDel" name="fileNameDel[]" value=""> 
+					
 
 			</form>
+
+		<table>
+		
+		<tr>
+					<td id="fileIndex">
+					<c:if test="${not empty file}">
+									<c:forEach var="file" items="${file}" varStatus="var">
+									<div>
+										
+										<input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.fid}">
+										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FILE_NO_${var.index}">
+										<a href="#" id="fileName" onclick="return false;">${file.org_file_name}</a>(${file.file_size}kb)
+										<button id="fileDel" onclick="fn_del('${file.fid}','FILE_NO_${var.index}');" type="button">삭제</button><br>
+									</div>
+									</c:forEach>
+								</c:if>
+								</td>
+							</tr>
+		
+		</table>
+
+
+	<div>
+	
+	<button type="button" class="fileAdd_btn btn-sm btn-primary">파일추가</button>
+					<br>
+					<br>
+	</div>
 
 			<div >
 
