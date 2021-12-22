@@ -1,4 +1,4 @@
-ClassicEditor 
+/*ClassicEditor
 
     .create( document.querySelector( '#content' ) ) 
 
@@ -12,4 +12,4 @@ ClassicEditor
 
         console.error( error ); 
 
-    } );
+    } );*/

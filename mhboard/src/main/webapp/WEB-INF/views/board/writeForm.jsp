@@ -15,9 +15,22 @@
 
 <meta charset="UTF-8">
 
-
-<script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
-<!-- jQuery -->
+<!-- 위지윅 에디터 추가 -->
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+ <script>
+ var ckeditor_config = {
+		 
+		 resize_enable : false,
+		 entrerMode : CKEDITOR.ENTER_BR,
+		 shiftEnterMode : CKEDITOR.ENTER_P,
+		 filebrowserUploadURL : "/common/ckUpload"
+		 
+ };
+ 
+ </script> -->
+ 
+ 
+ <!-- jQuery -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
@@ -49,9 +62,9 @@
 
 body {
 
-  padding-top: 70px;
+  padding-top: 0px;
 
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 
 }
 
@@ -91,11 +104,14 @@ body {
 
 				
 
-				<div class="mb-3">
+				<div class="mb-3" contentEditable="true">
 
 					<label for="content">내용</label>
 
 					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+					<script>
+						CKEDITOR.replace("content", ckeditor_config);
+					</script>
 
 				</div>
 
@@ -109,7 +125,7 @@ body {
 
 				</div>
 
-			
+			<td colspan="3"><input type="file" name="fileName">
 
 			</form>
 
