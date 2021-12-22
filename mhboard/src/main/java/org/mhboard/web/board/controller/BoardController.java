@@ -1,6 +1,7 @@
 package org.mhboard.web.board.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -97,9 +98,15 @@ public class BoardController {
 		 List<CommentVO> commentVO = boardService.readComment(bid);
 		 session.setAttribute("commentVO", commentVO);
 		 
-		 System.out.println("값이 왜 안나오냐? " + session.getAttribute("Content") + session.getAttribute("commentVO"));
+		 //파일 다운로드 구현중
+		 List<Map<String, Object>> fileList = boardService.selectFile(bid);
+		session.setAttribute("file", fileList);
+		
+		 
+		 System.out.println("값이 왜 안나오냐? " +session.getAttribute("file") + session.getAttribute("Content") + session.getAttribute("commentVO"));
 		 				return "board/Content";
-			}
+
+	}
 	
 	
 	//게시글 내용 수정폼 불러오기

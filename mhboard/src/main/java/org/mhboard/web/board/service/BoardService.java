@@ -1,6 +1,7 @@
 package org.mhboard.web.board.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.board.vo.CommentVO;
@@ -18,6 +19,10 @@ public interface BoardService {
 
 	//글작성 + 파일 업로드 구현중
 	public void write(BoardVO boardVO, MultipartHttpServletRequest mpReq) throws Exception;
+	
+	//파일 다운로드 구현중
+	public List<Map<String, Object>> selectFile(int bid) throws Exception;
+	
 	
 	//게시글 상세 내용 출력
 	public BoardVO readContent(int bid) throws Exception;

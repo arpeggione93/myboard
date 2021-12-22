@@ -46,4 +46,7 @@ public interface BoardDAO {
 	 
 	 //파일 업로드 파트
 	 void insertFile(Map<String, Object> map) throws Exception;
+	 
+	 //파일 다운로드 구현중
+	 List<Map<String, Object>> selectFile(int bid) throws Exception;
 }

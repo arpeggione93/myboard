@@ -116,5 +116,11 @@ public class BoardDAOImpl implements BoardDAO{
   		 sqlSession.insert(NAMESPACE + ".insertFile", map);
   	 }
   	
+  	//파일 다운로드 구현중
+  	public List<Map<String, Object>> selectFile(int bid) throws Exception{
+  		 
+  		return sqlSession.selectList(NAMESPACE + ".selectFile", bid);
+  		 
+  	 }
   	
 }

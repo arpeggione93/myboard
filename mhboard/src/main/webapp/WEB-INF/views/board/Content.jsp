@@ -126,6 +126,15 @@
 
 				<div class="board_tag">TAG : <c:out value="${Content.tag}"/> 	
 				
+				<br>
+				<br>
+				
+				<span>파일 목록</span>
+				<div class="form-group" style="border: 1px solid #dbdbdb;">
+					<c:forEach var="file" items="${file}">
+						<a href="#" onclick="fn_fileDown('${file.fid}'); return false;">${file.org_file_name}</a>(${file.file_size}kb)<br>
+					</c:forEach>
+				</div>
 				
 				<div style="margin-top : 20px">
 
@@ -252,6 +261,9 @@
 </div>
 
 	<!-- 댓글 작성창 여기까지 -->
+
+
+
 
 
 		</div>		

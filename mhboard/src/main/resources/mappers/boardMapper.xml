@@ -164,7 +164,19 @@
 	</insert>
 
 
-
+	<!-- 파일 다운로드 구현중 -->
+	<select id ="selectFile" parameterType="int" resultType="hashMap">
+	
+	SELECT
+		fid,
+		org_file_name,
+		ROUND(file_size/1024,1) AS file_size
+	FROM
+		mh_file
+	WHERE
+		bid = #{bid}
+	
+	</select>
 
 	<!-- 수정하기 -->
 
