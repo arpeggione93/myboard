@@ -237,14 +237,11 @@ function fn_prev(page, range, contentSize) {
 
 <div class="container-fluid">
 
-
-
-		
-
 <br>
 <div id ="container-fluid">
 	<div id="paginationBox">
-		<ul class="pagination">
+		<ul class="pagination justify-content-center">
+		
 			<c:if test="${paging.prev}">
 				<li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${paging.page}', '${paging.range}', '${paging.contentSize}')">Previous</a></li>
 			</c:if>
@@ -281,7 +278,7 @@ function fn_prev(page, range, contentSize) {
 
 		<div class="form-group row justify-content-center">
 
-			<div class="w100" style="padding-right:10px">
+			<div class="w75" style="padding-right:10px">
 
 				<select class="form-control form-control-sm" name="searchType" id="searchType">
 

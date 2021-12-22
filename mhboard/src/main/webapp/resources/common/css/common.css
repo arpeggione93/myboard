@@ -59,4 +59,19 @@ body {
 
 }
 
+.pagination1 {
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+  justify-content: center;
+}
+
+ul.pagination1 {
+    justify-content: center;
+}
+
+
+
 .contents_margin{ display:inline-block; width:200px; margin:30px 25px; padding:10px; color:#fff; border:5px solid green; background-color:gray; }

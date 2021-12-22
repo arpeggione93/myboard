@@ -5000,7 +5000,9 @@ input[type="button"].btn-block {
   justify-content: center;
 }
 
-
+ul.pagination {
+    justify-content: center;
+}
 
 .page-link {
   position: relative;
