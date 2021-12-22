@@ -34,6 +34,8 @@ public class BoardController {
 
 			, @RequestParam(required = false) String keyword)throws Exception{
 		
+		
+		
 		Search search = new Search();
 
 		search.setSearchType(searchType);
