@@ -25,7 +25,7 @@
 
 <!-- common CSS -->
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/login.css">
 
 
  <style>
@@ -66,8 +66,18 @@
       <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
 -->
+
+
+
   </div>
+  
+  
+  <div>
+<button value = "비로그인 사용자">비로그인 사용자</button>
 </div>
+  
+</div>
+
 
 
 
