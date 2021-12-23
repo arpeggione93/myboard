@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.board.vo.CommentVO;
+import org.mhboard.web.board.vo.MemberVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 
@@ -59,5 +60,9 @@ public interface BoardDAO {
 	 //파일 삭제 기능 구현중
 	 int deleteFile(int bid) throws Exception;
 
+	 
+	 //회원가입 구현중
+	 int regist(MemberVO memberVO) throws Exception;
+	 
 	 
 }

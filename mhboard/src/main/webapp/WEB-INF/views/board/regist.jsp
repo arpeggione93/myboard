@@ -38,10 +38,10 @@
 <form method="post" role = "form" style="text-align: center;">
 
 <div id = "sform">
-		아이디:<input type="text" name="memberId" placeholder = "ID"><br/>
-		비밀번호:<input type="password" name="memberPw" placeholder = "password"><br/>
-		닉네임:<input type="text" name="nickName" placeholder = "nickname"><br/>
-		이메일:<input type="email" name = "email" placeholder = "example@email.mail"><br/>
+		아이디:<input type="text" name="memberId" id="memberId" placeholder = "ID"><br/>
+		비밀번호:<input type="password" name="memberPw" id="memberPw" placeholder = "password"><br/>
+		닉네임:<input type="text" name="nickName" id="nickName" placeholder = "nickname"><br/>
+		이메일:<input type="email" name = "email" id="email" placeholder = "example@email.mail"><br/>
 		
 		<input type="submit" value="가입">
 </div>		

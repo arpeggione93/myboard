@@ -46,7 +46,8 @@ public class BoardController {
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
 	public String registPOST(MemberVO memberVO, RedirectAttributes rttr, HttpSession session) throws Exception {
 		
-		session.setAttribute("memberVO", memberVO);
+		boardService.regist(memberVO);
+		//session.setAttribute("memberVO", memberVO);
 		
 		
 		return "redirect:/";

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.board.vo.CommentVO;
+import org.mhboard.web.board.vo.MemberVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,11 @@ public interface BoardService {
 	
 	//수정할 댓글 불러오기
 	public CommentVO readUpdateComment(int cid) throws Exception;
+	
+	
+	//회원가입 구현중
+	public void regist(MemberVO memberVO) throws Exception;
+	
 	
 	
 }

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.board.vo.CommentVO;
+import org.mhboard.web.board.vo.MemberVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,7 @@ public class BoardDAOImpl implements BoardDAO{
 
 	private static final String NAMESPACE = "org.mhboard.web.mappers.boardMapper";
 	private static final String NAMESPACE2 = "org.mhboard.web.mappers.commentMapper";
-	
+	private static final String NAMESPACE3 = "org.mhboard.web.mappers.memberMapper";
 	
 	
 	private SqlSession sqlSession;
@@ -153,5 +154,16 @@ public class BoardDAOImpl implements BoardDAO{
   		 
   	 }
   	
+    
+    //회원가입 구현중
+    @Override
+	public int regist(MemberVO memberVO) throws Exception{
+    	
+    	return sqlSession.insert(NAMESPACE3 + ".regist", memberVO);
+    	
+    }
+	 
+    
+    
   	
 }

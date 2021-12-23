@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.mhboard.web.board.dao.BoardDAO;
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.board.vo.CommentVO;
+import org.mhboard.web.board.vo.MemberVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.mhboard.web.util.FileUtils;
@@ -155,6 +156,17 @@ public class BoardServiceImpl implements BoardService {
 				return boardDAO.readUpdateComment(cid);
 			
 		}
+		
+		
+		//회원가입 구현중
+		public void regist(MemberVO memberVO) throws Exception{
+			
+			boardDAO.regist(memberVO);
+			
+		}
+		
+		
+		
 		
 		
 }
