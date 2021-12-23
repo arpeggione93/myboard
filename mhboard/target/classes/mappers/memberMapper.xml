@@ -59,6 +59,34 @@ INSERT INTO mh_member (member_id, member_pw, email, nick_name, reg_dt)
 	WHERE nick_name = #{nickName}
 </select>
 
+<!-- 중복 이메일 조회 -->
+<select id = "emailChk" resultType ="int">
+	SELECT 
+		COUNT(*)
+	FROM
+		mh_member
+	WHERE email = #{email}
+
+</select>
+
+<!-- 로그인을 위한 회원정보 조회 -->
+<select id = "selectMember" resultType = "memberVO" parameterType ="memberVO">
+	SELECT 
+		mid,
+		member_id,
+		member_pw,
+		email,
+		nick_name
+		reg_dt,
+		admin	
+	FROM
+		mh_member
+	WHERE
+		member_id = #{memberId}
+
+</select>
+
+
 
 
 

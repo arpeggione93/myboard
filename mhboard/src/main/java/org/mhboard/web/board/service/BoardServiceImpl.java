@@ -180,6 +180,20 @@ public class BoardServiceImpl implements BoardService {
 				
 			}
 			
-		
+			
+			//회원가입 중복 이메일 확인
+			public int emailChk(MemberVO memberVO) throws Exception{
+				
+				return boardDAO.emailChk(memberVO);
+				
+			}
+			
+			//로그인을 위한 회원정보 조회
+			public MemberVO selectMember(String memberId) throws Exception{
+				
+				return boardDAO.selectMember(memberId);
+				
+			}
+			
 		
 }

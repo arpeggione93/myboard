@@ -177,6 +177,21 @@ public class BoardDAOImpl implements BoardDAO{
 	   
 	   return sqlSession.selectOne(NAMESPACE3 + ".nickChk", memberVO); 
    }
-  		 
-  	
+  
+   @Override
+ //회원가입 중복 이메일 확인
+	public int emailChk(MemberVO memberVO) throws Exception{
+	   
+	   return sqlSession.selectOne(NAMESPACE3 + ".emailChk", memberVO); 
+	   
+   }
+	
+  @Override
+     //로그인을 위한 회원정보 조회
+  public MemberVO selectMember(String memberId) throws Exception{
+	
+	  return sqlSession.selectOne(NAMESPACE3 + ".selectMember", memberId);
+  }
+	 
+   
 }

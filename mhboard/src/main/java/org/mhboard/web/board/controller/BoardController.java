@@ -39,6 +39,8 @@ public class BoardController {
 	private BoardService boardService;
 	
 	
+
+	
 	//회원가입 기능 구현중(임시)
 	@RequestMapping(value = "/regist", method = RequestMethod.GET)
 	public String registGET() {
@@ -54,8 +56,9 @@ public class BoardController {
 		String url = "";
 		session.setAttribute("memberVO", memberVO);
 		
-		int idChk = boardService.idChk(memberVO); // 1값이면 중복, 0이면 중복x
-		int nickChk = boardService.nickChk(memberVO);
+		int idChk = boardService.idChk(memberVO); // 아이디 중복확인 1값이면 중복, 0이면 중복x
+		int nickChk = boardService.nickChk(memberVO); // 닉네임 중복확인
+		int emailChk = boardService.emailChk(memberVO); // 이메일 중복확인
 		
 		System.out.println(idChk + "   "+nickChk +"값 두개 확인좀");
 		
@@ -65,6 +68,9 @@ public class BoardController {
 			//닉네임 중복확인
 			if(nickChk == 0) {
 			
+				
+				if(emailChk == 0) {
+				
 				String pw = memberVO.getMemberPw();
 				String chPw = pwEncoder.encode(pw);
 				
@@ -73,6 +79,11 @@ public class BoardController {
 				System.out.println("최종 회원가입 정보 : " + memberVO);
 				boardService.regist(memberVO);
 				url = "/";
+				}else {
+					
+					url = "board/regist";
+					
+				}
 				
 				
 			}else {

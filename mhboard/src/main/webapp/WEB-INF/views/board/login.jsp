@@ -54,9 +54,9 @@
     </div>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+    <form method = "post">
+      <input type="text" id="memberId" class="fadeIn second" name="memberId" placeholder="id">
+      <input type="text" id="memberPw" class="fadeIn third" name="memberPw" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 
