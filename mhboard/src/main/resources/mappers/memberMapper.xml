@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    
+
+<mapper namespace="org.mhboard.web.mappers.memberMapper">
+
+
+<!-- 회원정보 조회 -->
+<select id = "readMember" resultType = "memberVO" parameterType ="memberVO">
+	SELECT 
+		mid,
+		member_id,
+		member_pw,
+		email,
+		nick_name
+		reg_dt,
+		admin	
+	FROM
+		mh_member
+
+</select>
+
+<!-- 회원가입 -->
+<insert id ="regist" parameterType = "memberVO">
+
+INSERT INTO mh_member (member_id, member_pw, email, nick_name, reg_dt)
+		VALUES(
+		
+		#{memberId},
+		#{memberPw},
+		#{email},
+		#{nickName},
+		now()
+		)
+
+</insert>
+
+<!-- 회원정보 수정 -->
+
+<!-- 회원정보 삭제  -->
+
+
+</mapper>

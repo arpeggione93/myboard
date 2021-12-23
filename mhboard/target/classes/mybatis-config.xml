@@ -17,6 +17,8 @@
         <typeAlias type="org.mhboard.web.board.vo.BoardVO" alias="boardVO"/>
 	
         <typeAlias type="org.mhboard.web.board.vo.CommentVO" alias="commentVO"/>
+        
+        <typeAlias type="org.mhboard.web.board.vo.MemberVO" alias="memberVO"/>
 
 	</typeAliases>
  	

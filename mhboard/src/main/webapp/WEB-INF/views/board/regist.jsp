@@ -38,9 +38,9 @@
 <form method="post" role = "form" style="text-align: center;">
 
 <div id = "sform">
-		아이디:<input type="text" name="id" placeholder = "ID"><br/>
-		비밀번호:<input type="password" name="pw" placeholder = "password"><br/>
-		닉네임:<input type="text" name="name" placeholder = "nickname"><br/>
+		아이디:<input type="text" name="memberId" placeholder = "ID"><br/>
+		비밀번호:<input type="password" name="memberPw" placeholder = "password"><br/>
+		닉네임:<input type="text" name="nickName" placeholder = "nickname"><br/>
 		이메일:<input type="email" name = "email" placeholder = "example@email.mail"><br/>
 		
 		<input type="submit" value="가입">

@@ -1,6 +1,6 @@
 package org.mhboard.web.board.vo;
 
-public class memberVO {
+public class MemberVO {
 	
 	
 	
@@ -62,7 +62,7 @@ public class memberVO {
 	
 	@Override
 	public String toString() {
-		return "memberVO [mid=" + mid + ", memberId=" + memberId + ", memberPw=" + memberPw + ", email=" + email
+		return "MemberVO [mid=" + mid + ", memberId=" + memberId + ", memberPw=" + memberPw + ", email=" + email
 				+ ", nickName=" + nickName + ", regDt=" + regDt + ", admin=" + admin + "]";
 	}
 	

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.mhboard.web.board.service.BoardService;
 import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.board.vo.CommentVO;
+import org.mhboard.web.board.vo.MemberVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.mhboard.web.util.FileUtils;
@@ -40,6 +41,19 @@ public class BoardController {
 		return "board/regist";
 		
 	}
+	
+	//회원가입 요청(임시)
+	@RequestMapping(value = "/regist", method = RequestMethod.POST)
+	public String registPOST(MemberVO memberVO, RedirectAttributes rttr, HttpSession session) throws Exception {
+		
+		session.setAttribute("memberVO", memberVO);
+		
+		
+		return "redirect:/";
+		
+		
+	}
+	
 	
 	//추가해야 할 기능 : 회원가입 시 비밀번호 암호화 하기
 	
