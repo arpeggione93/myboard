@@ -115,20 +115,20 @@ public class BoardController {
 				
 				System.out.println("최종 회원가입 정보 : " + memberVO);
 				boardService.regist(memberVO);
-				rttr.addFlashAttribute("msg", "회원가입을 축하합니다.");
+				rttr.addFlashAttribute("msg1", "회원가입을 축하합니다.");
 				
 				url = "redirect:/";
 				}else {
 					
-					url = "board/regist";
+					url = "redirect:/board/regist";
 					
 				}
 				
 				
 			}else {
 			
-				rttr.addFlashAttribute("msg", "닉네임이 중복되었습니다..");
-				url = "board/regist";
+				rttr.addFlashAttribute("msg2", "닉네임이 중복되었습니다..");
+				url = "redirect:/board/regist";
 				
 			}
 			
@@ -136,8 +136,8 @@ public class BoardController {
 			
 		}else {
 			
-			rttr.addFlashAttribute("msg", "아이디가 중복되었습니다..");
-			url = "board/regist";
+			rttr.addFlashAttribute("msg2", "아이디가 중복되었습니다..");
+			url = "redirect:/board/regist";
 			
 			
 		}

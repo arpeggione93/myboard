@@ -49,6 +49,30 @@
 </head>
 
 <body>
+
+<script type="text/javascript">
+
+var chk = '${msg2}';
+
+if(!chk){
+	
+	
+	<%-- 비어있을 때 --%>
+	
+	
+}else{
+	
+	alert('${msg2}'); 
+
+
+}
+
+</script>
+
+
+
+
+
   <div class="container">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">

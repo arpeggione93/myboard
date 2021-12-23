@@ -72,20 +72,22 @@ input[type=password] {
 <!-- 회원가입 성공시 메시지 띄워주기 -->
 <script type="text/javascript">
 
-if('${msg}' == null){
+var msg = '${msg1}';
+
+if(!msg){
 	
+	<%-- 비어있을때 --%>
+	
+
 }else{
-
-	alert('${msg}'); 
-
+	
+	alert('${msg1}'); 
 	
 }
 
 </script>
 
-<script>
 
-</script>
 
 
 

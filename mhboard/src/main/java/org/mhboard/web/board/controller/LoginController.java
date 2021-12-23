@@ -42,11 +42,13 @@ public class LoginController {
 		
 		if(session.getAttribute("loginMember") == null) {
 			
-			url = "board/readList";
+			
+			url = "board/login";
 			
 		}else {
 			
-			url = "board/login";
+
+			url = "board/readList";
 			
 		}
 		
@@ -74,14 +76,14 @@ public class LoginController {
 			if(pwchk == true) {
 				
 				//세션에 로그인값을 저장
-				rttr.addFlashAttribute("msg", "로그인 되었습니다.");
+				rttr.addFlashAttribute("msg1", "로그인 되었습니다.");
 				session.setAttribute("loginMember", login);
 				url =  "redirect:/board/readList";
 				
 			}else {
 				
 				System.out.println("암호 틀렸음 ");
-				rttr.addFlashAttribute("msg", "암호가 틀렸습니다..");
+				rttr.addFlashAttribute("msg1", "암호가 틀렸습니다..");
 				url =  "redirect:/";
 				
 			}
@@ -89,7 +91,7 @@ public class LoginController {
 				
 			}else {
 				
-				rttr.addFlashAttribute("msg", "가입되지 않은 회원입니다..");
+				rttr.addFlashAttribute("msg1", "가입되지 않은 회원입니다..");
 				url = "redirect:/";
 				
 			}
