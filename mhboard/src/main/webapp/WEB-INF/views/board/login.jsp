@@ -56,7 +56,7 @@
     <!-- Login Form -->
     <form method = "post">
       <input type="text" id="memberId" class="fadeIn second" name="memberId" placeholder="id">
-      <input type="text" id="memberPw" class="fadeIn third" name="memberPw" placeholder="password">
+      <input type="password" id="memberPw" class="fadeIn third" name="memberPw" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 

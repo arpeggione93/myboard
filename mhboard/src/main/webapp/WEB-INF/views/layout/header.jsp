@@ -58,7 +58,7 @@
 
       <li class="nav-item">
 
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/">로그인하러가기러기</a>
 
       </li>
 
@@ -73,10 +73,40 @@
           <a class="dropdown-item" href="#">Another action</a>
 
           <a class="dropdown-item" href="#">Something else here</a>
-
+	
+		
         </div>
 
       </li>
+
+
+
+
+<li>
+
+					<c:if test="${!empty loginMember}">
+
+					<tr>
+							<td><c:out value="${loginMember.memberId}"/>님 환영합니다람쥐</td>
+							<td><button type="button" onclick="location.href='${pageContext.request.contextPath}/logout';"> 로그아웃 </button></td>
+							</tr>
+						
+					</c:if>
+					
+					<c:if test="${empty loginMember}">
+
+					<tr>
+							<td><button type="button" onclick="location.href='${pageContext.request.contextPath}/';"> 로그인 </button></td>
+							</tr>
+						
+					</c:if>
+										
+					
+</li>
+
+
+
+
 
     </ul>
 

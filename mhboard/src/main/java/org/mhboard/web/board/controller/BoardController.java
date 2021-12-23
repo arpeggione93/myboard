@@ -28,7 +28,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping(value= "/board")
+@RequestMapping(value= "/board/*")
 public class BoardController {
 
 	
@@ -40,6 +40,30 @@ public class BoardController {
 	
 	
 
+	
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginGET() {
+		
+		return "board/login";
+	}
+	
+	
+
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutGET(HttpSession session) {
+		
+		
+		 session.invalidate();
+    
+		
+		return "redirect:/";
+		
+	}
+	
+	
+	//여기까지
 	
 	//회원가입 기능 구현중(임시)
 	@RequestMapping(value = "/regist", method = RequestMethod.GET)
