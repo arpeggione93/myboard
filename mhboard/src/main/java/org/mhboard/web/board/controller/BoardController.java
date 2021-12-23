@@ -120,8 +120,8 @@ public class BoardController {
 		
 		String filePath = null;
 		
-		//filePath = "C:\\mp\\file\\"; // 파일이 저장될 위치(로컬)
-		filePath = 	"//usr//local//tomcat//webapps//ROOT//file//"; 	//파일 저장 위치(서버)	
+		filePath = "C:\\mp\\file\\"; // 파일이 저장될 위치(로컬)
+		//filePath = 	"//usr//local//tomcat//webapps//ROOT//file//"; 	//파일 저장 위치(서버)	
 				
 		// 파일을 저장했던 위치에서 첨부파일을 읽어 byte[]형식으로 변환한다.
 		byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(filePath + str_file_name));
