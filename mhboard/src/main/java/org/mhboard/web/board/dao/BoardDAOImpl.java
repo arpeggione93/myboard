@@ -142,6 +142,16 @@ public class BoardDAOImpl implements BoardDAO{
   			 
   		 }
   		 
+    
+  
+    
+  //파일 삭제 기능 구현중
+    @Override
+  	 public int deleteFile(int bid) throws Exception{
+  		 
+  		return sqlSession.delete(NAMESPACE + ".deleteFile" , bid);
+  		 
+  	 }
   	
   	
 }

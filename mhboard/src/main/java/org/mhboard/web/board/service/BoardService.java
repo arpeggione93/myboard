@@ -38,6 +38,9 @@ public interface BoardService {
 	//페이징처리(총 게시물 갯수)
 	public int readListCnt(Search search) throws Exception;
 	
+	//파일 삭제 기능 구현중
+	public	void deleteFile(int bid) throws Exception;
+	
 	
 	
 	 //댓글 기능들

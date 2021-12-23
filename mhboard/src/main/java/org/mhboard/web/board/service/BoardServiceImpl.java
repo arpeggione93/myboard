@@ -93,6 +93,15 @@ public class BoardServiceImpl implements BoardService {
 			boardDAO.delete(bid);
 			
 		}
+		
+		
+		//파일 삭제 기능 구현중
+		@Override
+		public void deleteFile(int bid) throws Exception{
+			 
+			 boardDAO.deleteFile(bid);
+		 }
+		
 
 
 		//페이징처리(총 게시물 갯수)

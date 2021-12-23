@@ -172,7 +172,21 @@ public class BoardController {
 		@RequestMapping(value = "/delete", method = RequestMethod.GET)
 		public String deleteGET(RedirectAttributes rttr, int bid) throws Exception{
 			
-			boardService.delete(bid);
+			System.out.println("파일있는지 확인좀" + boardService.selectFile(bid));
+			
+			if(boardService.selectFile(bid) != null) {
+				
+				boardService.deleteFile(bid);
+				boardService.delete(bid);
+			}else {
+			
+				
+				boardService.delete(bid);
+				
+				
+			}
+			
+			
 			return "redirect:/board/readList";
 		}
 	

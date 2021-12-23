@@ -25,6 +25,7 @@
 		edit_dt
 	FROM
 		mh_board
+	ORDER BY bid desc
 	
 	<!-- 검색기능 추가 -->
 	<trim prefix="WHERE" prefixOverrides="AND|OR">
@@ -198,6 +199,18 @@
 	</update>
 	
 
+
+	<!-- 파일 삭제 쿼리 -->
+	<delete id = "deleteFile" parameterType = "int">
+	
+		DELETE FROM mh_file
+		WHERE bid = #{bid}
+	
+	</delete>
+
+
+
+
 	<!-- 수정하기 -->
 
 	<update id = "update" parameterType = "boardVO">
@@ -212,6 +225,9 @@
 			BID = #{bid}
 		
 	</update>
+	
+	
+	
 
 	<!-- 삭제하기 -->
 	

@@ -56,4 +56,8 @@ public interface BoardDAO {
 	 //파일 수정 기능 구현중
 	 void updateFile(Map<String, Object> map) throws Exception;
 	 
+	 //파일 삭제 기능 구현중
+	 int deleteFile(int bid) throws Exception;
+
+	 
 }
