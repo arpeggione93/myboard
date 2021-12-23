@@ -76,7 +76,7 @@ INSERT INTO mh_member (member_id, member_pw, email, nick_name, reg_dt)
 		member_id,
 		member_pw,
 		email,
-		nick_name
+		nick_name,
 		reg_dt,
 		admin	
 	FROM

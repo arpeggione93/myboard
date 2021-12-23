@@ -270,9 +270,15 @@ function fn_prev(page, range, contentSize) {
 
 	<!-- paging{end} -->
 
+<c:if test="${!empty loginMember}">
 
-			<button type="button" class="btn btn-sm btn-primary" id="btnWriteForm">글쓰기</button>
+	<button type="button" class="btn btn-sm btn-primary" id="btnWriteForm">글쓰기</button>
+						
+</c:if>
 
+		
+		
+		
 
 <!-- search{s} -->
 

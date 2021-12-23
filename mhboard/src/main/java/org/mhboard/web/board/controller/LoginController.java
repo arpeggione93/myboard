@@ -25,7 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-public class HomeController {
+public class LoginController {
 	
 	
 	@Inject
@@ -63,7 +63,7 @@ public class HomeController {
 				
 				//세션에 로그인값을 저장
 				session.setAttribute("loginMember", login);
-				url =  "/board/readList";
+				url =  "redirect:/board/readList";
 				
 			}else {
 				
@@ -98,7 +98,7 @@ public class HomeController {
 		}
 		
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.

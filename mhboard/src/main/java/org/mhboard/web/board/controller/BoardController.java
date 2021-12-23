@@ -67,9 +67,21 @@ public class BoardController {
 	
 	//회원가입 기능 구현중(임시)
 	@RequestMapping(value = "/regist", method = RequestMethod.GET)
-	public String registGET() {
+	public String registGET(HttpSession session) {
 		
-		return "board/regist";
+		String url = "";
+		
+		if(session.getAttribute("loginMember") == null) {
+		
+		url = "board/regist";
+		
+		}else {
+			
+			url = "redirect:/";
+			
+		}
+		
+		return url;
 		
 	}
 	
@@ -182,9 +194,22 @@ public class BoardController {
 	
 	//글작성 폼
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
-	public String writeGET() {
+	public String writeGET(HttpSession session) {
 		
-		return "board/writeForm";
+		String url = "";
+		
+		if(session.getAttribute("loginMember") == null) {
+			
+			url = "redirect:/board/readList";
+			
+		}else {
+		
+			url = "board/writeForm";
+			
+		}
+		
+		return url;
+		
 		
 	}
 	

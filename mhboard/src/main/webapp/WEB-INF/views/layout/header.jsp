@@ -56,13 +56,13 @@
 
       </li>
 
-      <li class="nav-item">
+   <%--    <li class="nav-item">
 
         <a class="nav-link" href="${pageContext.request.contextPath}/">로그인하러가기러기</a>
 
-      </li>
+      </li> --%>
 
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
 
         <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
 
@@ -77,32 +77,41 @@
 		
         </div>
 
-      </li>
+      </li> -->
 
 
 
 
-<li>
+		<c:if test="${!empty loginMember}">
 
-					<c:if test="${!empty loginMember}">
-
-					<tr>
-							<td><c:out value="${loginMember.memberId}"/>님 환영합니다람쥐</td>
-							<td><button type="button" onclick="location.href='${pageContext.request.contextPath}/logout';"> 로그아웃 </button></td>
-							</tr>
-						
+	<li class = "nav-item active">				
+								<tr>
+							<td><a class="nav-link" href="#"><c:out value="${loginMember.memberId}"/>님 환영합니다.</a></td>
+								</tr>
+			</li>		
+				
+				<li>	
+					
+					<button type="button" class ="btn btn-danger float-right" onclick="location.href='${pageContext.request.contextPath}/logout';"> 로그아웃 </button>
+							
+							
+			</li>				
+							
 					</c:if>
 					
+					<li class = "nav-item active">
 					<c:if test="${empty loginMember}">
 
 					<tr>
-							<td><button type="button" onclick="location.href='${pageContext.request.contextPath}/';"> 로그인 </button></td>
+							<td><button class ="btn btn-danger float-right" type="button" onclick="location.href='${pageContext.request.contextPath}/';"> 로그인 </button></td>
 							</tr>
-						
-					</c:if>
-										
+							</c:if>
+						</li>
 					
-</li>
+
+					
+
+
 
 
 

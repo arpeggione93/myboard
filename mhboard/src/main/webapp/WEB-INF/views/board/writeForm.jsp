@@ -115,9 +115,9 @@ body {
 
 				<div class="mb-3">
 
-					<label for="reg_id">작성자</label>
+					<label for="reg_id">작성자(닉네임)</label>
 
-					<input type="text" class="form-control" name="regId" id="regId" placeholder="이름을 입력해 주세요">
+					<input type="text" class="form-control" name="regId" id="regId" value =<c:out value="${loginMember.nickName}"/> readonly>
 
 				</div>
 
