@@ -114,7 +114,8 @@ public class BoardController {
 				
 				System.out.println("최종 회원가입 정보 : " + memberVO);
 				boardService.regist(memberVO);
-				url = "/";
+				
+				url = "redirect:/";
 				}else {
 					
 					url = "board/regist";

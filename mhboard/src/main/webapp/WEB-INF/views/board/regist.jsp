@@ -1,52 +1,130 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
-<!DOCTYPE html>
 
-<html>
+
+
+<!DOCTYPE html>
+<html lang="ko">
 
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 화면 샘플 - Bootstrap</title>
 
-<meta charset="UTF-8">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
- <link rel='stylesheet' href='stylesforform.css'/>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      min-height: 100vh;
 
-<!-- jQuery -->
+      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
+      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+    }
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    .input-form {
+      max-width: 680px;
 
-<!-- Bootstrap CSS -->
+      margin-top: 80px;
+      padding: 32px;
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-<!-- common CSS -->
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/common.css">
-
-
-
-
-
-<title>MH</title>
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
+    <div class="input-form-backgroud row">
+      <div class="input-form col-md-12 mx-auto">
+        <h4 class="mb-3">회원가입</h4>
+        <form class="validation-form"  method="post" novalidate>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="name">아이디</label>
+              <input type="text" class="form-control" id="memberId" name = "memberId" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                아이디를 입력해주세요.
+              </div>
+            </div>
+            
+               <div class="mb-3">
+            <label for="memberPw">비밀번호</label>
+            <input type="password" class="form-control" id="memberPw" name = "memberPw" placeholder="비밀번호" required>
+            <div class="invalid-feedback">
+              비빌번호를 입력해주세요.
+            </div>
+          </div>
+            
+            
+            <div class="col-md-6 mb-3">
+              <label for="nickname">닉네임</label>
+              <input type="text" class="form-control" id="nickName" name = "nickName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                닉네임을 입력해주세요.
+              </div>
+            </div>
+          </div>
 
-<form method="post" role = "form" style="text-align: center;">
+          <div class="mb-3">
+            <label for="email">이메일</label>
+            <input type="email" class="form-control" id="email" name = "email" placeholder="you@example.com" required>
+            <div class="invalid-feedback">
+              이메일을 입력해주세요.
+            </div>
+          </div>
 
-<div id = "sform">
-		아이디:<input type="text" name="memberId" id="memberId" placeholder = "ID"><br/>
-		비밀번호:<input type="password" name="memberPw" id="memberPw" placeholder = "password"><br/>
-		닉네임:<input type="text" name="nickName" id="nickName" placeholder = "nickname"><br/>
-		이메일:<input type="email" name = "email" id="email" placeholder = "example@email.mail"><br/>
-		
-		<input type="submit" value="가입">
-</div>		
+     
+          <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
+        </form>
+      </div>
+    </div>
+    <footer class="my-3 text-center text-small">
+      <p class="mb-1">&copy; 2021 YD</p>
+    </footer>
+  </div>
 
-	</form>
+<script>
+    window.addEventListener('load', () => {
+      const forms = document.getElementsByClassName('validation-form');
 
-    </body>
+      Array.prototype.filter.call(forms, (form) => {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  </script>
+
+
+
+
+
+
+</body>
+
 </html>
+
+
+
+
