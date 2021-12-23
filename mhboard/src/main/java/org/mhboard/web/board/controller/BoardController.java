@@ -14,6 +14,7 @@ import org.mhboard.web.board.vo.BoardVO;
 import org.mhboard.web.board.vo.CommentVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
+import org.mhboard.web.util.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -117,8 +118,13 @@ public class BoardController {
 		String str_file_name = (String) resultMap.get("str_file_name");
 		String org_file_name = (String) resultMap.get("org_file_name");
 		
+		String filePath = null;
+		
+		//filePath = "C:\\mp\\file\\"; // 파일이 저장될 위치(로컬)
+		filePath = 	"//usr//local//tomcat//webapps//ROOT//file//"; 	//파일 저장 위치(서버)	
+				
 		// 파일을 저장했던 위치에서 첨부파일을 읽어 byte[]형식으로 변환한다.
-		byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("C:\\mp\\file\\"+str_file_name));
+		byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(filePath + str_file_name));
 		
 		res.setContentType("application/octet-stream");
 		res.setContentLength(fileByte.length);

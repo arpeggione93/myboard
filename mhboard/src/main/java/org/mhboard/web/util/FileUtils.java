@@ -15,7 +15,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Component("fileUtils")
 public class FileUtils {
-	private static final String filePath = "C:\\mp\\file\\"; // 파일이 저장될 위치
+	//private static final String filePath = "C:\\mp\\file\\"; // 파일이 저장될 위치(로컬)
+	
+	private static final String filePath = "//usr//local//tomcat//webapps//ROOT//file//"; //서버 저장위치
+	// 서버 저장 경로 "//usr//local//tomcat//webapps//ROOT//tripdiary//board_img//";
 	
 	public List<Map<String, Object>> parseInsertFileInfo(BoardVO boardVO, 
 			MultipartHttpServletRequest mpReq) throws Exception{
