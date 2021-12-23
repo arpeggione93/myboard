@@ -32,6 +32,21 @@ public class BoardController {
 	@Inject
 	private BoardService boardService;
 	
+	
+	//회원가입 기능 구현중(임시)
+	@RequestMapping(value = "/regist", method = RequestMethod.GET)
+	public String registGET() {
+		
+		return "board/regist";
+		
+	}
+	
+	//추가해야 할 기능 : 회원가입 시 비밀번호 암호화 하기
+	
+	
+	
+	
+	
 	//목록 불러오기 + 페이징처리 진행중
 	@RequestMapping(value = "/readList", method = RequestMethod.GET)
 	public String readListGet(Model model, @RequestParam(required = false, defaultValue = "1") int page
