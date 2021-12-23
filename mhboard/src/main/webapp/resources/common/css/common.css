@@ -59,6 +59,11 @@ body {
 
 }
 
+.bg-dark11 {
+    background-color: #000000;
+}
+
+
 .pagination1 {
   display: -ms-flexbox;
   display: flex;

@@ -6,6 +6,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
+<style>
+
+.bg-dark11 {
+    background-color: #000000;
+}
+
+</style>
+
 
 <!-- jQuery -->
 
@@ -28,10 +36,14 @@
 
 <!--메뉴바 추가 부분-->
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark11">
 
-  <a class="navbar-brand" href="${pageContext.request.contextPath}/board/readList">MH Blog</a>
-
+<%--   <a class="navbar-brand" href="${pageContext.request.contextPath}/board/readList">MH Blog</a>
+ --%>
+ 
+   <a class="navbar-brand" href="${pageContext.request.contextPath}/board/readList"> <img src="${pageContext.request.contextPath}/resources/img/mainlogo.png" id="icon" alt="User Icon" />
+</a>
+ 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
 
     <span class="navbar-toggler-icon"></span>
