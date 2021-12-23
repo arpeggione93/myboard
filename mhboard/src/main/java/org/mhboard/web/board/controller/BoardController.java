@@ -51,22 +51,50 @@ public class BoardController {
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
 	public String registPOST(MemberVO memberVO, RedirectAttributes rttr, HttpSession session) throws Exception {
 		
+		String url = "";
+		session.setAttribute("memberVO", memberVO);
+		
+		int idChk = boardService.idChk(memberVO); // 1값이면 중복, 0이면 중복x
+		int nickChk = boardService.nickChk(memberVO);
+		
+		System.out.println(idChk + "   "+nickChk +"값 두개 확인좀");
+		
 		//회원가입 이전 아이디 중복확인
-		if(boardService.idChk(memberVO)== 0) {
-
-			boardService.regist(memberVO);
+		if(idChk == 0) {
+		
+			//닉네임 중복확인
+			if(nickChk == 0) {
 			
-			String	url = "board/regist";
+				String pw = memberVO.getMemberPw();
+				String chPw = pwEncoder.encode(pw);
+				
+				memberVO.setMemberPw(chPw);
+				
+				System.out.println("최종 회원가입 정보 : " + memberVO);
+				boardService.regist(memberVO);
+				url = "/";
+				
+				
+			}else {
+			
+				url = "board/regist";
+				
+			}
+			
+			
 			
 		}else {
 			
-			String url = "redirect:/";
+		
+			url = "board/regist";
+			
+			
 		}
+			
+
+			
 		
-		//session.setAttribute("memberVO", memberVO);
-		
-		
-		return "url";
+		return url;
 		
 		
 	}

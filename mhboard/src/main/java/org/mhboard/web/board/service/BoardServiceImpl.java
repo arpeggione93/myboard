@@ -173,6 +173,13 @@ public class BoardServiceImpl implements BoardService {
 			 
 		 }
 		 
+		//회원가입 중복 닉네임 확인
+			public int nickChk(MemberVO memberVO) throws Exception{
+				
+				return boardDAO.nickChk(memberVO);
+				
+			}
+			
 		
 		
 }

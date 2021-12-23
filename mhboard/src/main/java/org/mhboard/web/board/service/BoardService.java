@@ -68,7 +68,9 @@ public interface BoardService {
 	//회원가입 중복 아이디 확인
 	public int idChk(MemberVO memberVO) throws Exception;
 		 
-	
+	//회원가입 중복 닉네임 확인
+	public int nickChk(MemberVO memberVO) throws Exception;
+			 
 }
 
 

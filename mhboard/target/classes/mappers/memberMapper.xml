@@ -50,6 +50,14 @@ INSERT INTO mh_member (member_id, member_pw, email, nick_name, reg_dt)
 	WHERE member_id = #{memberId}
 </select>
 
+<!-- 중복 닉네임 조회 -->
+<select id = "nickChk" resultType = "int">
+	SELECT 
+		COUNT(*)
+	FROM
+		mh_member
+	WHERE nick_name = #{nickName}
+</select>
 
 
 
