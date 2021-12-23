@@ -41,6 +41,20 @@ INSERT INTO mh_member (member_id, member_pw, email, nick_name, reg_dt)
 
 </insert>
 
+<!-- 중복 아이디 조회 -->
+<select id = "idChk" resultType = "int">
+	SELECT 
+		COUNT(*)
+	FROM
+		mh_member
+	WHERE member_id = #{memberId}
+</select>
+
+
+
+
+
+
 <!-- 회원정보 수정 -->
 
 <!-- 회원정보 삭제  -->

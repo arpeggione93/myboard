@@ -16,6 +16,7 @@ import org.mhboard.web.board.vo.MemberVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.mhboard.web.util.FileUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -30,6 +31,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping(value= "/board")
 public class BoardController {
 
+	
+	@Inject
+	BCryptPasswordEncoder pwEncoder;
+	
 	@Inject
 	private BoardService boardService;
 	
@@ -46,11 +51,22 @@ public class BoardController {
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
 	public String registPOST(MemberVO memberVO, RedirectAttributes rttr, HttpSession session) throws Exception {
 		
-		boardService.regist(memberVO);
+		//회원가입 이전 아이디 중복확인
+		if(boardService.idChk(memberVO)== 0) {
+
+			boardService.regist(memberVO);
+			
+			String	url = "board/regist";
+			
+		}else {
+			
+			String url = "redirect:/";
+		}
+		
 		//session.setAttribute("memberVO", memberVO);
 		
 		
-		return "redirect:/";
+		return "url";
 		
 		
 	}

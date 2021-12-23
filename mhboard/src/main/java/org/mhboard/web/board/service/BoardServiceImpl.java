@@ -166,7 +166,13 @@ public class BoardServiceImpl implements BoardService {
 		}
 		
 		
-		
+		//회원가입 중복 아이디 확인
+		 public int idChk(MemberVO memberVO) throws Exception{
+			 
+			 return boardDAO.idChk(memberVO);
+			 
+		 }
+		 
 		
 		
 }

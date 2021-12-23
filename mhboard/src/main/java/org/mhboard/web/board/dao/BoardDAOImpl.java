@@ -163,7 +163,14 @@ public class BoardDAOImpl implements BoardDAO{
     	
     }
 	 
-    
+    //회원가입 중복 아이디 확인
+    @Override
+  	 public int idChk(MemberVO memberVO) throws Exception{
+    	
+    	return sqlSession.selectOne(NAMESPACE3 + ".idChk", memberVO);
+    	
+    }
+  	 
     
   	
 }

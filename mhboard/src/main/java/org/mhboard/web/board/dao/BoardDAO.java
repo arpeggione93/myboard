@@ -64,5 +64,7 @@ public interface BoardDAO {
 	 //회원가입 구현중
 	 int regist(MemberVO memberVO) throws Exception;
 	 
+	 //회원가입 중복 아이디 확인
+	 int idChk(MemberVO memberVO) throws Exception;
 	 
 }

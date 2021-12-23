@@ -65,7 +65,9 @@ public interface BoardService {
 	//회원가입 구현중
 	public void regist(MemberVO memberVO) throws Exception;
 	
-	
+	//회원가입 중복 아이디 확인
+	public int idChk(MemberVO memberVO) throws Exception;
+		 
 	
 }
 
