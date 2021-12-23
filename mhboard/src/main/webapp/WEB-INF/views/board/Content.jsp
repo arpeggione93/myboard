@@ -48,8 +48,21 @@
 	});
 	
 	
-
 	<%--삭제 버튼 클릭 이벤트--%>
+
+	$(document).on('click', '#btnDelete', function(){
+
+    var url = "${pageContext.request.contextPath}/board/delete";
+
+   	    url = url + "?bid=" + ${Content.bid};
+	
+		location.href = url;
+
+	});
+	
+	
+
+	<%--댓글 삭제 버튼 클릭 이벤트--%>
 
 	$(document).on('click', '#commentDeleteBtn', function(){
 
