@@ -19,6 +19,7 @@ import org.mhboard.web.util.FileUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -114,6 +115,7 @@ public class BoardController {
 				
 				System.out.println("최종 회원가입 정보 : " + memberVO);
 				boardService.regist(memberVO);
+				rttr.addFlashAttribute("msg", "회원가입을 축하합니다.");
 				
 				url = "redirect:/";
 				}else {
@@ -125,6 +127,7 @@ public class BoardController {
 				
 			}else {
 			
+				rttr.addFlashAttribute("msg", "닉네임이 중복되었습니다..");
 				url = "board/regist";
 				
 			}
@@ -133,7 +136,7 @@ public class BoardController {
 			
 		}else {
 			
-		
+			rttr.addFlashAttribute("msg", "아이디가 중복되었습니다..");
 			url = "board/regist";
 			
 			
@@ -276,13 +279,26 @@ public class BoardController {
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String updateGET(int bid, HttpSession session) throws Exception{
 		
-		session.setAttribute("Content", boardService.readContent(bid));
-		session.setAttribute("boardVO", new BoardVO());
+		String url = "";
 		
-		List<Map<String, Object>> fileList = boardService.selectFile(bid);
-		session.setAttribute("file", fileList);
+		if(session.getAttribute("loginMember") == null) {
+			
+			url = "redirect:/board/readList";
+			
+		}else {
+			
+			session.setAttribute("Content", boardService.readContent(bid));
+			session.setAttribute("boardVO", new BoardVO());
+			
+			List<Map<String, Object>> fileList = boardService.selectFile(bid);
+			session.setAttribute("file", fileList);
+			
+			url = "board/editForm";
+			
+		}
 		
-		return "board/editForm";
+	
+		return url;
 	}
 	
 	
@@ -305,31 +321,44 @@ public class BoardController {
 	
 	//게시글 삭제
 		@RequestMapping(value = "/delete", method = RequestMethod.GET)
-		public String deleteGET(RedirectAttributes rttr, int bid) throws Exception{
+		public String deleteGET(RedirectAttributes rttr, int bid, HttpSession session) throws Exception{
 			
-			System.out.println("파일있는지 확인좀" + boardService.selectFile(bid));
 			
-			if(boardService.selectFile(bid) != null) {
+			String url = "";
+			
+			if(session.getAttribute("loginMember") == null) {
 				
-				boardService.deleteFile(bid);
-				boardService.delete(bid);
+				url = "redirect:/board/readList";
+				
 			}else {
-			
 				
-				boardService.delete(bid);
+				System.out.println("파일있는지 확인좀" + boardService.selectFile(bid));
 				
+				if(boardService.selectFile(bid) != null) {
+					
+					boardService.deleteFile(bid);
+					boardService.delete(bid);
+				}else {
 				
+					
+					boardService.delete(bid);
+					
+					
+				}
+				
+				url = "redirect:/board/readList";
 			}
 			
+		
 			
-			return "redirect:/board/readList";
+			
+			return url;
 		}
 	
 	
 		
 		
 		@ExceptionHandler(RuntimeException.class)
-
 		public String exceptionHandler(Model model, Exception e){
 
 		//logger.info("exception : " + e.getMessage());

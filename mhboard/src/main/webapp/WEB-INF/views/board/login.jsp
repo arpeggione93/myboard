@@ -69,6 +69,25 @@ input[type=password] {
 <body>
 
 
+<!-- 회원가입 성공시 메시지 띄워주기 -->
+<script type="text/javascript">
+
+if('${msg}' == null){
+	
+}else{
+
+	alert('${msg}'); 
+
+	
+}
+
+</script>
+
+<script>
+
+</script>
+
+
 
 	<div class="wrapper fadeInDown">
   <div id="formContent">
