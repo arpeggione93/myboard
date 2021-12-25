@@ -1,11 +1,17 @@
 package org.mhboard.web.board.controller;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -25,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -250,6 +257,129 @@ public class BoardController {
 
 	}
 	
+	
+	
+	
+
+	// ck 에디터에서 파일 업로드
+	@RequestMapping(value = "/imgUpload", method = RequestMethod.POST)
+	public void postCKEditorImgUpload(HttpServletRequest req,
+	          HttpServletResponse res,
+	          @RequestParam MultipartFile upload) throws Exception {
+	
+	 // 랜덤 문자 생성
+	 UUID uid = UUID.randomUUID();
+	 
+	 OutputStream out = null;
+	 PrintWriter printWriter = null;
+	   
+	 // 인코딩
+	 res.setCharacterEncoding("utf-8");
+	 res.setContentType("text/html;charset=utf-8");
+	 
+	 try {
+	  
+	  String fileName = upload.getOriginalFilename();  // 파일 이름 가져오기
+	  System.out.println("제대로 이미지 들어가는지:" + fileName);
+	  byte[] bytes = upload.getBytes();
+	  
+	  String uploadPath="C:\\mp\\img\\";
+	  // 업로드 경로
+	  String ckUploadPath = uploadPath + uid + "_" + fileName;
+	  
+	  System.out.println("이번에는 경로까지 수정했을때 : " + ckUploadPath);
+	  
+	  out = new FileOutputStream(new File(ckUploadPath));
+	  out.write(bytes);
+	  out.flush();  // out에 저장된 데이터를 전송하고 초기화
+	  
+	  String callback = req.getParameter("CKEditorFuncNum");
+	  System.out.println("콜백 몇번인지 확인 :" + callback);
+	  printWriter = res.getWriter();
+	  String fileUrl = uploadPath + uid + "_" + fileName;  // 작성화면
+	  
+	  // 업로드시 메시지 출력
+	  printWriter.println("<script type='text/javascript'>"
+	     + "window.parent.CKEDITOR.tools.callFunction("
+	     + callback+",'"+ fileUrl+"','이미지를 업로드하였습니다.')"
+	     +"</script>");
+	  
+	  printWriter.flush();
+	  
+	 } catch (IOException e) { e.printStackTrace();
+	 } finally {
+	  try {
+	   if(out != null) { out.close(); }
+	   if(printWriter != null) { printWriter.close(); }
+	  } catch(IOException e) { e.printStackTrace(); }
+	 }
+	 
+	 return; 
+	}
+	
+	/*
+	//글작성시 이미지 첨부 기능
+	@RequestMapping(value="/imgUpload", method=RequestMethod.POST)
+	public void imgUploadPOST(HttpServletRequest req,HttpServletResponse resp, @RequestParam MultipartFile mtp) throws Exception {
+
+		
+		resp.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html; charset=utf-8");
+		
+		
+		 try {
+	  
+		
+		 //파일 이름 가져오기
+        String fileName=mtp.getOriginalFilename();
+        System.out.println("이게 바로 본문 이미지 삽입 :" + fileName);
+ 
+        //파일을 바이트 배열로 변환
+        byte[] bytes=mtp.getBytes();
+
+        //이미지를 업로드할 디렉토리를 정해준다
+        String uploadPath="C:\\mp\\img\\";
+        OutputStream out=new FileOutputStream(new File(uploadPath+fileName));
+ 
+        //서버에 write
+        out.write(bytes);
+        
+        //성공여부 가져오기
+        String callback=req.getParameter("CKEditorFuncNum");
+        
+        //클라이언트에 이벤트 추가 (자바스크립트 실행)
+        PrintWriter printWriter=resp.getWriter(); //자바스크립트 쓰기위한 도구
+ 
+        String fileUrl= req.getContextPath()+uploadPath+fileName;
+       
+        if(!callback.equals("1")) { // callback이 1일 경우만 성공한 것
+        	 printWriter.println("<script>alert('이미지 업로드에 실패했습니다.');"+"</script>");
+
+        }else {
+        	 System.out.println("upload img 들어온다! "+fileUrl);
+             
+             printWriter.println("<script>window.parent.CKEDITOR.tools.callFunction("+callback+",'"+fileUrl+"','이미지가 업로드되었습니다.')"+"</script>");
+             
+        }
+        
+        printWriter.flush();
+        
+         } catch (IOException e) { e.printStackTrace();
+	 } finally {
+	 
+	 }
+        
+        
+   
+	}
+
+	
+*/	
+	
+	
+	
+	
+	//첨부파일 다운로드 기능
 	@RequestMapping(value="/fileDown")
 	public void fileDown(@RequestParam Map<String, Object> map, HttpServletResponse res) throws Exception{
 		Map<String, Object> resultMap = boardService.selectFileInfo(map);
@@ -272,6 +402,10 @@ public class BoardController {
 		res.getOutputStream().close();
 		
 	}
+	
+	
+	
+	
 	
 	
 	

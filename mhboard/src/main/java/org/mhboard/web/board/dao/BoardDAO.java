@@ -71,9 +71,9 @@ public interface BoardDAO {
 	 int nickChk(MemberVO memberVO) throws Exception;
 		 
 	//회원가입 중복 이메일 확인
-		 int emailChk(MemberVO memberVO) throws Exception;
+	 int emailChk(MemberVO memberVO) throws Exception;
 		 
     //로그인을 위한 회원정보 조회
-		 MemberVO selectMember(String memberId) throws Exception;
+	 MemberVO selectMember(String memberId) throws Exception;
 	 
 }
