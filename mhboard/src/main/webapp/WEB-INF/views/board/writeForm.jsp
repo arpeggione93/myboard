@@ -38,6 +38,11 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+
+<!-- 위지윅 editor -->
+
+<script src="/resources/ckeditor/ckeditor.js"></script>
+
 <title>board</title>
 
 <script>
@@ -128,8 +133,16 @@ body {
 					<label for="content">내용</label>
 
 					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+				<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
 					<script>
-						CKEDITOR.replace("content", ckeditor_config);
+ 					var ckeditor_config = {
+  							 resize_enaleb : false,
+  						 enterMode : CKEDITOR.ENTER_BR,
+   							shiftEnterMode : CKEDITOR.ENTER_P,
+  								 filebrowserUploadUrl : "/admin/goods/ckUpload"
+ 							};
+ 
+					 CKEDITOR.replace("content", ckeditor_config);
 					</script>
 
 				</div>
