@@ -123,12 +123,25 @@ body {
 				<div class="mb-3">
 
 				 <textarea class ="form-control" rows="20" cols="50" name="content" id="content"></textarea>
+	
 				<script>
+ var ckeditor_config = {
+   resize_enaleb : false,
+   enterMode : CKEDITOR.ENTER_BR,
+   shiftEnterMode : CKEDITOR.ENTER_P,
+   filebrowserUploadUrl : "${pageContext.request.contextPath}/resources/common/file"
+ };
+ 
+ CKEDITOR.replace("content", ckeditor_config);
+</script>
+	
+	
+				<!-- <script>
 		
 			CKEDITOR.replace("content", {filebrowserUploadUrl: '${pageContext.request.contextPath}/resources/common/file'}); 
 			 filebrowserImageUploadUrl: '${pageContext.request.contextPath}/resources/common/file'
 				</script>
-					
+ -->					
 
 				</div>
 				
