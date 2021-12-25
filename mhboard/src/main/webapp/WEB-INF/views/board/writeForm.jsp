@@ -15,20 +15,8 @@
 
 <meta charset="UTF-8">
 
-<!-- 위지윅 에디터 추가 -->
-<!-- <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
- <script>
- var ckeditor_config = {
-		 
-		 resize_enable : false,
-		 entrerMode : CKEDITOR.ENTER_BR,
-		 shiftEnterMode : CKEDITOR.ENTER_P,
-		 filebrowserUploadURL : "/common/ckUpload"
-		 
- };
- 
- </script> -->
- 
+
+
  
  <!-- jQuery -->
 
@@ -39,9 +27,13 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 
-<!-- 위지윅 editor -->
 
-<script src="/resources/ckeditor/ckeditor.js"></script>
+
+<!-- 위지윅에디터 추가중 -->
+<script src = "${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+
+
+
 
 <title>board</title>
 
@@ -127,25 +119,29 @@ body {
 				</div>
 
 				
+				<label>내용</label>
+				<div class="mb-3">
 
-				<div class="mb-3" contentEditable="true">
-
-					<label for="content">내용</label>
-
-					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
-				<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
-					<script>
- 					var ckeditor_config = {
-  							 resize_enaleb : false,
-  						 enterMode : CKEDITOR.ENTER_BR,
-   							shiftEnterMode : CKEDITOR.ENTER_P,
-  								 filebrowserUploadUrl : "/admin/goods/ckUpload"
- 							};
- 
-					 CKEDITOR.replace("content", ckeditor_config);
-					</script>
+				 <textarea class ="form-control" rows="20" cols="50" name="content" id="content"></textarea>
+				<script>
+		
+			CKEDITOR.replace("content", {filebrowserUploadUrl: '${pageContext.request.contextPath}/resources/common/file'}); 
+			 filebrowserImageUploadUrl: '${pageContext.request.contextPath}/resources/common/file'
+				</script>
+					
 
 				</div>
+				
+				
+				
+	<!-- 			<div class="mb-3">
+				
+				<label for = "test2">테스트중</label>
+				
+				<textarea row = "5" cols="50" name = "test2" id = "test2"></textarea>
+				
+				
+				</div> -->
 
 				
 
@@ -170,8 +166,7 @@ body {
 			<button class="fileAdd_btn btn-sm btn-primary" type="button">파일추가</button>	
 			<br>
 			</div>
-			<!-- <input type="file" name="file"/>
-			 -->
+		
 
 			</form>
 
@@ -187,7 +182,6 @@ body {
 
 	</article>
 	
-<script src="${pageContext.request.contextPath}/resources/common/js/ckeditor.js"></script>
 
 </body>
 
