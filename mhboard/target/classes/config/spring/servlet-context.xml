@@ -17,12 +17,13 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/ckeditor/**"  location="/WEB-INF/views/ckeditor/" />
+	<!-- <resources mapping="/img/**" location="/img/"/> -->
 	<resources mapping="/img/**" location="/img/"/>
-	
-	<!-- 로컬에서 테스트 하는중 -->
-	<beans:bean id="imgUpload" class="java.lang.String">
+	<!-- <resources mapping="/img/**" location="file:\\C:\mp\img\" />
+	 --><!-- 로컬에서 테스트 하는중 -->
+	<!-- <beans:bean id="imgUpload" class="java.lang.String">
  <beans:constructor-arg  value="C:\mp\img"  />
-</beans:bean>
+</beans:bean> -->
 
 
 

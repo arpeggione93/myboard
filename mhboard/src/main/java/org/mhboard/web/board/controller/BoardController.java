@@ -293,8 +293,8 @@ public class BoardController {
 						String fileName = file.getName();
 						System.out.println("이것이 파일명 : " + fileName);
 						byte[] bytes = file.getBytes();
-						String uploadPath = req.getServletContext().getRealPath("/img");
-						//String uploadPath = "C:\\mp\\img\\";
+						String uploadPath = req.getServletContext().getRealPath("/img");//이게 root 내부 저장
+						//String uploadPath = "C:/mp/img/";
 						//String uploadPath ="/Users/mhc/Documents/mp/img";
 						//String uploadPath = "//usr//local//tomcat//webapps//ROOT//file//";
 						
@@ -317,6 +317,7 @@ public class BoardController {
                         resp.setCharacterEncoding("utf-8"); 
                         //resp.setContentType("application/json");
                         String fileUrl = req.getContextPath() + "/img/" + fileName;
+                       // String fileUrl = "/img/" + fileName;
                         //String fileUrl = "C:\\mp\\img\\" + fileName;
                        // String fileUrl = "//usr//local//tomcat//webapps//ROOT//file//" + fileName;
                         // json 데이터로 등록

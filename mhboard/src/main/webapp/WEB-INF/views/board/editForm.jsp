@@ -15,6 +15,8 @@
 
 <meta charset="UTF-8">
 
+<!-- 위지윅에디터 추가중 -->
+<script src = "${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 
 
 <!-- jQuery -->
@@ -126,10 +128,14 @@ body {
 				</div>
 
 				
-
+		<label>내용</label>
 				<div class="mb-3">
-					<label for="content">내용</label>
+					
 					<textarea class="form-control" rows="5" name="content" id="content">${Content.content}</textarea>
+				<script>
+
+ 				CKEDITOR.replace("content");
+				</script>
 				</div>
 
 				
