@@ -279,7 +279,7 @@ public class BoardController {
 	@ResponseBody
 	public String fileUpload(HttpServletRequest req, HttpServletResponse resp, 
                  MultipartHttpServletRequest multiFile, @RequestParam MultipartFile upload) throws Exception {
-		JsonObject json = new JsonObject();
+		
 		PrintWriter printWriter = null;
 		OutputStream out = null;
 		MultipartFile file = multiFile.getFile("upload");
@@ -293,10 +293,10 @@ public class BoardController {
 						String fileName = file.getName();
 						System.out.println("이것이 파일명 : " + fileName);
 						byte[] bytes = file.getBytes();
-						//String uploadPath = req.getServletContext().getRealPath("/img");
+						String uploadPath = req.getServletContext().getRealPath("/img");
 						//String uploadPath = "C:\\mp\\img\\";
 						//String uploadPath ="/Users/mhc/Documents/mp/img";
-						String uploadPath = "//usr//local//tomcat//webapps//ROOT//file//";
+						//String uploadPath = "//usr//local//tomcat//webapps//ROOT//file//";
 						
 						File uploadFile = new File(uploadPath);
 						
@@ -313,20 +313,19 @@ public class BoardController {
                         System.out.println("이것이 업로드파일 (uploadFIle):" +uploadFile );
 						
                         printWriter = resp.getWriter();
-                        //resp.setContentType("text/html;charset=utf-8");
+                        resp.setContentType("text/html;charset=utf-8");
                         resp.setCharacterEncoding("utf-8"); 
-                        resp.setContentType("application/json");
-                       // String fileUrl = req.getContextPath() + "/img/" + fileName;
+                        //resp.setContentType("application/json");
+                        String fileUrl = req.getContextPath() + "/img/" + fileName;
                         //String fileUrl = "C:\\mp\\img\\" + fileName;
-                        String fileUrl = "//usr//local//tomcat//webapps//ROOT//file//" + fileName;
+                       // String fileUrl = "//usr//local//tomcat//webapps//ROOT//file//" + fileName;
                         // json 데이터로 등록
                         // {"uploaded" : 1, "fileName" : "test.jpg", "url" : "/img/test.jpg"}
                         // 이런 형태로 리턴이 나가야함.
+                        JsonObject json = new JsonObject();
                         json.addProperty("uploaded", 1);
                         json.addProperty("fileName", fileName);
                         json.addProperty("url", fileUrl);
-                        
-                        
                         printWriter.println(json);
                         
                     }catch(IOException e){
@@ -347,8 +346,7 @@ public class BoardController {
 	
 	
 	
-	
-	
+
 	
 	
 	
