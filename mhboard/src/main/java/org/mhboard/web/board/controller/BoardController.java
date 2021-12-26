@@ -85,6 +85,9 @@ public class BoardController {
 	}
 	
 	
+	
+	
+	
 	//여기까지
 	
 	//회원가입 기능 구현중(임시)
@@ -92,6 +95,8 @@ public class BoardController {
 	public String registGET(HttpSession session) {
 		
 		String url = "";
+		
+
 		
 		if(session.getAttribute("loginMember") == null) {
 		
@@ -293,7 +298,7 @@ public class BoardController {
 						String fileName = file.getName();
 						System.out.println("이것이 파일명 : " + fileName);
 						byte[] bytes = file.getBytes();
-						String uploadPath = req.getServletContext().getRealPath("/img");//이게 root 내부 저장
+						String uploadPath = req.getServletContext().getRealPath("/file/img");//이게 root 내부 저장
 						//String uploadPath = "C:/mp/img/";
 						//String uploadPath ="/Users/mhc/Documents/mp/img";
 						//String uploadPath = "//usr//local//tomcat//webapps//ROOT//file//";
@@ -316,7 +321,7 @@ public class BoardController {
                         resp.setContentType("text/html;charset=utf-8");
                         resp.setCharacterEncoding("utf-8"); 
                         //resp.setContentType("application/json");
-                        String fileUrl = req.getContextPath() + "/img/" + fileName;
+                        String fileUrl = req.getContextPath() + "/file/img/" + fileName;
                        // String fileUrl = "/img/" + fileName;
                         //String fileUrl = "C:\\mp\\img\\" + fileName;
                        // String fileUrl = "//usr//local//tomcat//webapps//ROOT//file//" + fileName;
@@ -346,150 +351,7 @@ public class BoardController {
 	}	
 	
 	
-	
 
-	
-	
-	
-/*
-	// ck 에디터에서 파일 업로드
-	@RequestMapping(value = "/imgUpload", method = RequestMethod.POST)
-	public void postCKEditorImgUpload(HttpServletRequest req,
-	          HttpServletResponse res,
-	          @RequestParam MultipartFile upload) throws Exception {
-
-	
-	
-	 // 랜덤 문자 생성
-	 UUID uid = UUID.randomUUID();
-	 
-	 OutputStream out = null;
-	 PrintWriter printWriter = null;
-	   
-	 // 인코딩
-	 //res.setCharacterEncoding("utf-8");
-	 //res.setContentType("text/html;charset=utf-8");
-	
-	 
-	 try {
-	  
-	  String fileName = upload.getOriginalFilename();  // 파일 이름 가져오기
-	  System.out.println("제대로 이미지 들어가는지:" + fileName);
-	  byte[] bytes = upload.getBytes();
-	  
-	  System.out.println("이게 뭔말?? (byte) : " + bytes.toString());
-	  
-	  String uploadPath="C:\\" + File.separator + "mp\\" + File.separator+"img\\" + File.separator;
-	  // 업로드 경로
-	  //String ckUploadPath = uploadPath + uid + "_" + fileName;
-	  
-	  String ckUploadPath = uploadPath + uid + "_" + fileName;
-	  
-	  
-	  System.out.println("이번에는 경로까지 수정했을때 (uploadPath): " + uploadPath);
-	  System.out.println("이번에는 경로까지 수정했을때 (ckuploadPath): " + ckUploadPath);
-	  
-	  out = new FileOutputStream(new File(ckUploadPath));
-	  System.out.println("이건 뭐임(out): " +out);
-	  out.write(bytes);
-	  out.flush();  // out에 저장된 데이터를 전송하고 초기화
-	  
-	  String callback = req.getParameter("CKEditorFuncNum");
-	  System.out.println("콜백 몇번인지 확인 :" + callback);
-	  printWriter = res.getWriter();
-	  String fileUrl =  uploadPath + uid + "_" + fileName;  // 작성화면
-	  
-	  System.out.println("이건 작성화면에서 나오는 파일 경로 : " + fileUrl);
-	  
-	  // 업로드시 메시지 출력
-	  printWriter.println("<script type='text/javascript'>"
-	     + "window.parent.CKEDITOR.tools.callFunction("
-	     + callback+",'"+ fileUrl+"','이미지를 업로드하였습니다.')"
-	     +"</script>");
-	  
-	  printWriter.flush();
-	  
-	 } catch (IOException e) { e.printStackTrace();
-	 } finally {
-	  try {
-	   if(out != null) { out.close(); }
-	   if(printWriter != null) { printWriter.close(); }
-	  } catch(IOException e) { e.printStackTrace(); }
-	 }
-	 
-	 
-	 
-	
-	}
-	
-	
-	*/
-	
-	/*
-	//글작성시 이미지 첨부 기능
-	@RequestMapping(value="/imgUpload", method=RequestMethod.POST)
-	public void imgUploadPOST(HttpServletRequest req,HttpServletResponse resp, @RequestParam MultipartFile mtp) throws Exception {
-
-		
-		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html; charset=utf-8");
-		
-		
-		 try {
-	  
-		
-		 //파일 이름 가져오기
-        String fileName=mtp.getOriginalFilename();
-        System.out.println("이게 바로 본문 이미지 삽입 :" + fileName);
- 
-        //파일을 바이트 배열로 변환
-        byte[] bytes=mtp.getBytes();
-
-        //이미지를 업로드할 디렉토리를 정해준다
-        String uploadPath="C:\\mp\\img\\";
-        OutputStream out=new FileOutputStream(new File(uploadPath+fileName));
- 
-        //서버에 write
-        out.write(bytes);
-        
-        //성공여부 가져오기
-        String callback=req.getParameter("CKEditorFuncNum");
-        
-        //클라이언트에 이벤트 추가 (자바스크립트 실행)
-        PrintWriter printWriter=resp.getWriter(); //자바스크립트 쓰기위한 도구
- 
-        String fileUrl= req.getContextPath()+uploadPath+fileName;
-       
-        if(!callback.equals("1")) { // callback이 1일 경우만 성공한 것
-        	 printWriter.println("<script>alert('이미지 업로드에 실패했습니다.');"+"</script>");
-
-        }else {
-        	 System.out.println("upload img 들어온다! "+fileUrl);
-             
-             printWriter.println("<script>window.parent.CKEDITOR.tools.callFunction("+callback+",'"+fileUrl+"','이미지가 업로드되었습니다.')"+"</script>");
-             
-        }
-        
-        printWriter.flush();
-        
-         } catch (IOException e) { e.printStackTrace();
-	 } finally {
-	 
-		 
-		 
-		 
-		 
-	 }
-        
-        
-   
-	}
-
-	
-*/
-	
-	
-	
 	
 	//첨부파일 다운로드 기능
 	@RequestMapping(value="/fileDown")

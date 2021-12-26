@@ -59,6 +59,35 @@ input[type=password] {
 }
 
 
+.button.test {
+    background-color: #56baed;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgb(95 186 233 / 40%);
+    box-shadow: 0 10px 30px 0 rgb(95 186 233 / 40%);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.fadeIn.fourth {
+    -webkit-animation-delay: 1.0s;
+    -moz-animation-delay: 1.0s;
+    animation-delay: 1.0s;
+}
+
+
 
     </style>
 
@@ -97,19 +126,23 @@ if(!msg){
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="${pageContext.request.contextPath}/resources/img/facebook_cover_photo_1.png" id="icon" alt="User Icon" />
+      <img src="${pageContext.request.contextPath}/resources/img/loginlogo.png" id="icon" alt="User Icon" />
     </div>
 
     <!-- Login Form -->
     <form method = "post">
     <br>
+    <br>
       <input type="text" id="memberId" class="form-control fadeIn second" name="memberId" placeholder="아이디">
 <br>
+
       <input type="password" id="memberPw" class="form-control fadeIn second" name="memberPw" placeholder="비밀번호"><p></p>
 <br>
-<br>
-      <input type="submit" class="fadeIn third" value="Log In"><p/>
-      <button type ="button" class="fadeIn thrid" onclick="location.href='${pageContext.request.contextPath}/board/regist';">회원가입</button>
+
+      <input type="submit" class="fadeIn third" value="Sign In">
+      <c:if test="${chk eq 0}">
+      <button type ="button" class="fadeIn fourth button test" onclick="location.href='${pageContext.request.contextPath}/board/regist';">Sign Up</button>
+    	</c:if>
     </form>
 
     <!-- Remind Passowrd -->

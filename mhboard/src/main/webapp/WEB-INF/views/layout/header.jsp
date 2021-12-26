@@ -41,7 +41,7 @@
 <%--   <a class="navbar-brand" href="${pageContext.request.contextPath}/board/readList">MH Blog</a>
  --%>
  
-   <a class="navbar-brand" href="${pageContext.request.contextPath}/board/readList"> <img src="${pageContext.request.contextPath}/resources/img/mainlogo.png" id="icon" alt="User Icon" />
+   <a class="navbar-brand" href="${pageContext.request.contextPath}/board/readList"> <img src="${pageContext.request.contextPath}/resources/img/mainlogo.png" id="icon2" alt="User Icon" />
 </a>
  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,15 +58,15 @@
 
       <li class="nav-item active">
 
-        <a class="nav-link" href="${pageContext.request.contextPath}/board/readList">게시판<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/board/readList">글 목록<span class="sr-only">(current)</span></a>
 
       </li>
 
-      <li class="nav-item">
+ <!--      <li class="nav-item">
 
         <a class="nav-link" href="#">Link</a>
 
-      </li>
+      </li> -->
 
    <%--    <li class="nav-item">
 
@@ -94,47 +94,45 @@
 
 
 
-		<c:if test="${!empty loginMember}">
-
-	<li class = "nav-item active">				
-								<tr>
-							<td><a class="nav-link" href="#"><c:out value="${loginMember.memberId}"/>님 환영합니다.</a></td>
-								</tr>
-			</li>		
-				
-				<li>	
+		
 					
-					<button type="button" class ="btn btn-danger float-right" onclick="location.href='${pageContext.request.contextPath}/logout';"> 로그아웃 </button>
-							
-							
-			</li>				
-							
-					</c:if>
-					
-					<li class = "nav-item active">
-					<c:if test="${empty loginMember}">
-
-					<tr>
-							<td><button class ="btn btn-danger float-right" type="button" onclick="location.href='${pageContext.request.contextPath}/';"> 로그인 </button></td>
-							</tr>
-							</c:if>
-						</li>
-					
-
-					
-
-
-
-
-
-
-
+	
     </ul>
 
     <form class="form-inline my-2 my-md-0">
 
-      <input class="form-control" type="text" placeholder="Search">
+<c:if test="${!empty loginMember}">
 
+	<li class = "nav-item active">				
+								
+			<font size = 5px color ="grey"><c:out value="${loginMember.nickName}"/></font><font color = white>님 환영합니다.</font>
+								
+	</li>		
+				<li>	
+			<button type="button" class ="btn btn-danger float-right" onclick="location.href='${pageContext.request.contextPath}/logout';"> 로그아웃 </button>
+				</li>				
+						
+			<c:if test="${admin eq 'jmh8649'}">
+					<li>
+					<button type="button" class ="btn btn-danger float-right" onclick="location.href='${pageContext.request.contextPath}/admin';"> 로그아웃 </button>
+					</li>	
+			</c:if>
+							
+		</c:if>
+
+
+				<c:if test="${empty loginMember}">
+
+				<tr>
+			<button type="button" class ="btn btn-danger float-right"  onclick="location.href='${pageContext.request.contextPath}/';"> 로그인 </button>
+				</tr>
+				</c:if>
+	
+
+
+
+
+  <!--     <input class="form-control" type="text" placeholder="Search" disabled hidden> -->
     </form>
 
   </div>

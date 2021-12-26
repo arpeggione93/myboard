@@ -86,10 +86,25 @@ INSERT INTO mh_member (member_id, member_pw, email, nick_name, reg_dt)
 
 </select>
 
+<!-- 회원가입 방지 기능 -->
+<update id = "updateAdmin" parameterType = "String">
+UPDATE mh_member SET
+	admin = 1	
+WHERE
+	member_id = #{admin}
+
+</update>
+
+<!-- 회원가입 방지기능2 -->
+<select id = "registcancel" resultType = "int">
+SELECT 
+		admin
+	FROM
+		mh_member
+	WHERE member_id = "jmh8649"
 
 
-
-
+</select>
 
 <!-- 회원정보 수정 -->
 

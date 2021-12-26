@@ -76,4 +76,10 @@ public interface BoardDAO {
     //로그인을 위한 회원정보 조회
 	 MemberVO selectMember(String memberId) throws Exception;
 	 
+	 //회원가입 방지 기능 추가중
+	 void updateAdmin(String admin) throws Exception;
+	 
+	int registCancel();
+	 
+	 
 }

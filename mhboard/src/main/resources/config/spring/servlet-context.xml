@@ -18,7 +18,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/ckeditor/**"  location="/WEB-INF/views/ckeditor/" />
 	<!-- <resources mapping="/img/**" location="/img/"/> -->
-	<resources mapping="/img/**" location="/img/"/>
+	<resources mapping="/file/img/**" location="/file/img/"/>
 	<!-- <resources mapping="/img/**" location="file:\\C:\mp\img\" />
 	 --><!-- 로컬에서 테스트 하는중 -->
 	<!-- <beans:bean id="imgUpload" class="java.lang.String">

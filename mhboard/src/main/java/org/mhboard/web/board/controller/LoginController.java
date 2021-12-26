@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mhboard.web.board.service.BoardService;
@@ -28,6 +30,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class LoginController {
 	
 	
+	
+	
+	
+	
+	
 	@Inject
 	BCryptPasswordEncoder pwEncoder;
 	
@@ -35,10 +42,47 @@ public class LoginController {
 	private BoardService boardService;
 	
 	
+	
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String updateAdminGET(MemberVO memberVO, HttpSession session, HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		
+		System.out.println("회원정지 요청이 들어옴");
+		String url = "";
+		
+		System.out.println("이게 로그인 회원 정보 : " + session.getAttribute("admin"));
+		
+		if(session.getAttribute("admin").equals("jmh8649")) {
+			
+			boardService.updateAdmin("jmh8649");
+			
+			url = "redirect:/";
+			
+			
+		}else {
+			
+			
+			url =  "redirect:/";
+			
+		}
+		
+		
+		return url;
+		
+		
+	}
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String loginGET(HttpSession session) {
+	public String loginGET(HttpSession session) throws Exception {
 		
 		String url = "";
+		
+		session.setAttribute("chk", boardService.registCancel());
+		
+		System.out.println("회원가입 기능 막혔나? : " +session.getAttribute("chk"));
 		
 		if(session.getAttribute("loginMember") == null) {
 			
@@ -78,11 +122,11 @@ public class LoginController {
 				//세션에 로그인값을 저장
 				rttr.addFlashAttribute("msg1", "로그인 되었습니다.");
 				session.setAttribute("loginMember", login);
+				session.setAttribute("admin", login.getMemberId());
 				url =  "redirect:/board/readList";
 				
 			}else {
 				
-				System.out.println("암호 틀렸음 ");
 				rttr.addFlashAttribute("msg1", "암호가 틀렸습니다..");
 				url =  "redirect:/";
 				
@@ -97,7 +141,7 @@ public class LoginController {
 			}
 			
 			System.out.println("22로그인한 정보입니다." + session.getAttribute("loginMember"));
-			System.out.println("이동경로이다 : " + url);
+
 			return url;
 		
 			
@@ -115,12 +159,7 @@ public class LoginController {
 		}
 		
 	
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	
+
 	
 	
 	

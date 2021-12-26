@@ -164,8 +164,8 @@ function fn_prev(page, range, contentSize) {
 
 
 
-
-<h2>개념 정리</h2>
+<br>
+<h2>개인 블로그</h2>
 
 		<colgroup>
 			<col style="width:5%;" />

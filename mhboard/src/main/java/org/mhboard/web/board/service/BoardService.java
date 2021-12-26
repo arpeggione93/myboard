@@ -79,6 +79,12 @@ public interface BoardService {
 	public MemberVO selectMember(String memberId) throws Exception;
 	
 	
+	 //회원가입 방지 기능 추가중
+	public void updateAdmin(String admin) throws Exception;
+	 
+	public  int registCancel() throws Exception;
+	 
+	
 }
 
 

@@ -195,5 +195,16 @@ public class BoardServiceImpl implements BoardService {
 				
 			}
 			
-		
+			 //회원가입 방지 기능 추가중
+			public void updateAdmin(String admin) throws Exception{
+				
+				boardDAO.updateAdmin(admin);
+			}
+			 
+			public int registCancel() throws Exception{
+				
+			 return	boardDAO.registCancel();
+				
+			}
+			 
 }

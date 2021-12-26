@@ -193,5 +193,18 @@ public class BoardDAOImpl implements BoardDAO{
 	  return sqlSession.selectOne(NAMESPACE3 + ".selectMember", memberId);
   }
 	 
+  @Override
+  //회원가입 방지 기능 추가중
+  public void updateAdmin(String admin) throws Exception{
+	  
+	  sqlSession.selectOne(NAMESPACE3 + ".updateAdmin", admin); 
+  }
+	 
+  @Override
+  public int registCancel(){
+	  
+	  return sqlSession.selectOne(NAMESPACE3 + ".registcancel");
+	  
+  }
    
 }
