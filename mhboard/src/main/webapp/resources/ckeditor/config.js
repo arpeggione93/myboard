@@ -38,7 +38,9 @@ CKEDITOR.editorConfig = function( config ) {
 	
 	config.filebrowserUploadUrl      = '/board/imgUpload?type=Files',
 	config.filebrowserImageUploadUrl = '/board/imgUpload?type=Images',
-	config.filebrowserUploadMethod='form'; //파일 오류났을때 alert띄워줌
+	config.filebrowserWindowWidth = '640',
+    config.filebrowserWindowHeight= '480';
+	//config.filebrowserUploadMethod='form'; //파일 오류났을때 alert띄워줌
 	
 	
 };

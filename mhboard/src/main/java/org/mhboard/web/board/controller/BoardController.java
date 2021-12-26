@@ -37,6 +37,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.JsonObject;
+import org.apache.commons.lang.StringUtils;
+import javax.servlet.ServletException;
+import javax.servlet.ServletContext;
+
+
 @Controller
 @RequestMapping(value= "/board/*")
 public class BoardController {
@@ -268,7 +274,85 @@ public class BoardController {
 	
 	
 	
-
+	
+	@RequestMapping(value="/imgUpload", method=RequestMethod.POST)
+	@ResponseBody
+	public String fileUpload(HttpServletRequest req, HttpServletResponse resp, 
+                 MultipartHttpServletRequest multiFile, @RequestParam MultipartFile upload) throws Exception {
+		JsonObject json = new JsonObject();
+		PrintWriter printWriter = null;
+		OutputStream out = null;
+		MultipartFile file = multiFile.getFile("upload");
+		if(file != null){
+			if(file.getSize() > 0 && StringUtils.isNotBlank(file.getName())){
+				if(file.getContentType().toLowerCase().startsWith("image/")){
+					try{
+						
+						System.out.println("이것은 실제 프로젝트 로컬 위치임 : " + req.getRealPath("/"));
+						System.out.println("이것은 프로젝트 절대경로 확인 :" + req.getRealPath(""));
+						String fileName = file.getName();
+						System.out.println("이것이 파일명 : " + fileName);
+						byte[] bytes = file.getBytes();
+						//String uploadPath = req.getServletContext().getRealPath("/img");
+						//String uploadPath = "C:\\mp\\img\\";
+						//String uploadPath ="/Users/mhc/Documents/mp/img";
+						String uploadPath = "//usr//local//tomcat//webapps//ROOT//file//";
+						
+						File uploadFile = new File(uploadPath);
+						
+						
+						if(!uploadFile.exists()){
+							uploadFile.mkdirs();
+						}
+						fileName = upload.getOriginalFilename();
+						fileName = UUID.randomUUID().toString() + "_" +fileName;
+						
+						uploadPath = uploadPath + "/" + fileName;
+						out = new FileOutputStream(new File(uploadPath));
+                        out.write(bytes); //여기까지가 서버에 직접 이미지 저장하는 흐름
+                        System.out.println("이것이 업로드파일 (uploadFIle):" +uploadFile );
+						
+                        printWriter = resp.getWriter();
+                        //resp.setContentType("text/html;charset=utf-8");
+                        resp.setCharacterEncoding("utf-8"); 
+                        resp.setContentType("application/json");
+                       // String fileUrl = req.getContextPath() + "/img/" + fileName;
+                        //String fileUrl = "C:\\mp\\img\\" + fileName;
+                        String fileUrl = "//usr//local//tomcat//webapps//ROOT//file//" + fileName;
+                        // json 데이터로 등록
+                        // {"uploaded" : 1, "fileName" : "test.jpg", "url" : "/img/test.jpg"}
+                        // 이런 형태로 리턴이 나가야함.
+                        json.addProperty("uploaded", 1);
+                        json.addProperty("fileName", fileName);
+                        json.addProperty("url", fileUrl);
+                        
+                        
+                        printWriter.println(json);
+                        
+                    }catch(IOException e){
+                        e.printStackTrace();
+                    }finally{
+                        if(out != null){
+                            out.close();
+                        }
+                        if(printWriter != null){
+                            printWriter.close();
+                        }		
+					}
+				}
+			}
+		}
+		return null;
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+/*
 	// ck 에디터에서 파일 업로드
 	@RequestMapping(value = "/imgUpload", method = RequestMethod.POST)
 	public void postCKEditorImgUpload(HttpServletRequest req,
@@ -339,6 +423,9 @@ public class BoardController {
 	
 	}
 	
+	
+	*/
+	
 	/*
 	//글작성시 이미지 첨부 기능
 	@RequestMapping(value="/imgUpload", method=RequestMethod.POST)
@@ -389,6 +476,10 @@ public class BoardController {
          } catch (IOException e) { e.printStackTrace();
 	 } finally {
 	 
+		 
+		 
+		 
+		 
 	 }
         
         
@@ -396,7 +487,7 @@ public class BoardController {
 	}
 
 	
-*/	
+*/
 	
 	
 	
@@ -410,9 +501,9 @@ public class BoardController {
 		
 		String filePath = null;
 		
-		filePath = "C:\\mp\\file\\"; // 파일이 저장될 위치(로컬)
+		//filePath = "C:\\mp\\file\\"; // 파일이 저장될 위치(로컬)
 		
-		//filePath = 	"//usr//local//tomcat//webapps//ROOT//file//"; 	//파일 저장 위치(서버)	
+		filePath = 	"//usr//local//tomcat//webapps//ROOT//file//"; 	//파일 저장 위치(서버)	
 				
 		// 파일을 저장했던 위치에서 첨부파일을 읽어 byte[]형식으로 변환한다.
 		byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(filePath + str_file_name));
