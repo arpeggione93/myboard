@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,7 @@ import org.mhboard.web.board.vo.MemberVO;
 import org.mhboard.web.paging.Paging;
 import org.mhboard.web.paging.Search;
 import org.mhboard.web.util.FileUtils;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +41,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping(value= "/board/*")
 public class BoardController {
 
+/*	
+	 //파일 디렉토리 사용시
+    @Resource(name="uploadPath")
+    private String uploadPath;
+	
+*/	
 	
 	@Inject
 	BCryptPasswordEncoder pwEncoder;
@@ -266,6 +274,8 @@ public class BoardController {
 	public void postCKEditorImgUpload(HttpServletRequest req,
 	          HttpServletResponse res,
 	          @RequestParam MultipartFile upload) throws Exception {
+
+	
 	
 	 // 랜덤 문자 생성
 	 UUID uid = UUID.randomUUID();
@@ -274,8 +284,9 @@ public class BoardController {
 	 PrintWriter printWriter = null;
 	   
 	 // 인코딩
-	 res.setCharacterEncoding("utf-8");
-	 res.setContentType("text/html;charset=utf-8");
+	 //res.setCharacterEncoding("utf-8");
+	 //res.setContentType("text/html;charset=utf-8");
+	
 	 
 	 try {
 	  
@@ -283,20 +294,29 @@ public class BoardController {
 	  System.out.println("제대로 이미지 들어가는지:" + fileName);
 	  byte[] bytes = upload.getBytes();
 	  
-	  String uploadPath="C:\\mp\\img\\";
+	  System.out.println("이게 뭔말?? (byte) : " + bytes.toString());
+	  
+	  String uploadPath="C:\\" + File.separator + "mp\\" + File.separator+"img\\" + File.separator;
 	  // 업로드 경로
+	  //String ckUploadPath = uploadPath + uid + "_" + fileName;
+	  
 	  String ckUploadPath = uploadPath + uid + "_" + fileName;
 	  
-	  System.out.println("이번에는 경로까지 수정했을때 : " + ckUploadPath);
+	  
+	  System.out.println("이번에는 경로까지 수정했을때 (uploadPath): " + uploadPath);
+	  System.out.println("이번에는 경로까지 수정했을때 (ckuploadPath): " + ckUploadPath);
 	  
 	  out = new FileOutputStream(new File(ckUploadPath));
+	  System.out.println("이건 뭐임(out): " +out);
 	  out.write(bytes);
 	  out.flush();  // out에 저장된 데이터를 전송하고 초기화
 	  
 	  String callback = req.getParameter("CKEditorFuncNum");
 	  System.out.println("콜백 몇번인지 확인 :" + callback);
 	  printWriter = res.getWriter();
-	  String fileUrl = uploadPath + uid + "_" + fileName;  // 작성화면
+	  String fileUrl =  uploadPath + uid + "_" + fileName;  // 작성화면
+	  
+	  System.out.println("이건 작성화면에서 나오는 파일 경로 : " + fileUrl);
 	  
 	  // 업로드시 메시지 출력
 	  printWriter.println("<script type='text/javascript'>"
@@ -314,7 +334,9 @@ public class BoardController {
 	  } catch(IOException e) { e.printStackTrace(); }
 	 }
 	 
-	 return; 
+	 
+	 
+	
 	}
 	
 	/*
@@ -389,6 +411,7 @@ public class BoardController {
 		String filePath = null;
 		
 		filePath = "C:\\mp\\file\\"; // 파일이 저장될 위치(로컬)
+		
 		//filePath = 	"//usr//local//tomcat//webapps//ROOT//file//"; 	//파일 저장 위치(서버)	
 				
 		// 파일을 저장했던 위치에서 첨부파일을 읽어 byte[]형식으로 변환한다.

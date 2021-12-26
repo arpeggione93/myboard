@@ -18,6 +18,13 @@
 	
 	<!-- additional -->
 	
+	<dependency>
+	<groupId>com.google.code.gson</groupId>
+	<artifactId>gson</artifactId>
+	<version>2.8.2</version>
+</dependency>
+	
+	
 	 <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 <dependency>
     <groupId>org.springframework.security</groupId>

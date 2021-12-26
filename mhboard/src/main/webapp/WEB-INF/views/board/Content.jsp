@@ -172,7 +172,8 @@
 				<button type="button" class="btn btn-sm btn-primary" id="btnDelete">삭제</button>
 </c:if>
 				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
-
+				
+			
 			</div>
 			
 			</div>
