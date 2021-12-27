@@ -165,7 +165,7 @@
 				
 				<div style="margin-top : 20px">
 
-<c:if test="${!empty loginMember}">
+<c:if test="${loginMember.nickName eq Content.regId}">
 
 				<button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
 
